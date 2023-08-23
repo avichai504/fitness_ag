@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { Box, Typography, Stack, Button, TextField } from "@mui/material";
-import { fetchData, exercisesOptions } from "../utils/fetchData";
+import { fetchData, exerciseOptions } from "../utils/fetchData";
 import HorizontalScrollbar from "./HorizontalScrollbar";
 
 const SearchExercises = ({
@@ -17,7 +17,7 @@ const SearchExercises = ({
     const fetchExercisesData = async () => {
       const bodyPartsData = await fetchData(
         "https://exercisedb.p.rapidapi.com/exercises/bodyPartList",
-        exercisesOptions
+        exerciseOptions
       );
       setBodyParts(["all", ...bodyPartsData]); // add 'all' to the beginning of the array
     };
@@ -29,7 +29,7 @@ const SearchExercises = ({
       // console.log(search)  //! Here is the  search value
       const exercisesData = await fetchData(
         "https://exercisedb.p.rapidapi.com/exercises",
-        exercisesOptions
+        exerciseOptions
       );
       const searchedExercises = exercisesData.filter(
         (exercise) =>
