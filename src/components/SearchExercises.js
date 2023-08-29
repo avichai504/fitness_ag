@@ -25,6 +25,7 @@ const SearchExercises = ({
   }, []);
 
   const handleSearch = async () => {
+    window.scrollTo({top:1830, behavior:"smooth"})
     if (search) {
       // console.log(search)  //! Here is the  search value
       const exercisesData = await fetchData(
@@ -47,13 +48,13 @@ const SearchExercises = ({
   return (
     <Stack alignItems="center" justifyContent="center" mt="37px" p="20px">
       <Typography
-        fontWeight={700}
+        fontWeight={70}
         sx={{ fontSize: { lg: "44px", xs: "30px" } }}
-        mb="50px"
+        mb="20px"
         textAlign="center"
+        color="red"
       >
-        Awesome Exercises You <b />
-        Should Try
+        Search for Exercises, Target Muscle, Equipment or Body Part
       </Typography>
       <Box position="relative" mb="72px">
         <TextField
@@ -75,6 +76,12 @@ const SearchExercises = ({
           }}
           placeholder="Search Exercises"
           type="text"
+          
+          onKeyDown={(e)=> {
+            if(e.key === "Enter")
+            handleSearch()
+          }}
+          
         />
         <Button
           className="search-btn"

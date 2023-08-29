@@ -1,6 +1,6 @@
 body {
   font-family: 'Josefin Sans';
-  background-color: #FFFAFB;
+  background-color: hsla(0, 100%, 50%, 0.1);
 }
 
 * {
@@ -55,13 +55,14 @@ body {
 
 .hero-banner-img {
   position: absolute;
-  right: 0px;
-  top: 60px;
-  width: 700px;
-  height: 800px;
+  right: -40px;
+  top: 80px;
+  width: 850px;
+  height: 950px;
   margin-top: -330px;
-  border-radius: 180px 20px 210px 20px;
-  opacity: 0.8;
+  border-radius: 40px;
+  /* border-radius: 180px 20px 210px 20px; */
+  opacity: 0.9;
 }
 
 .exercise-card {
