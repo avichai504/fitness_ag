@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Typography, Stack, Button } from "@mui/material";
+import { Box, Typography, Button } from "@mui/material";
 import HeroBannerImage from "C://VS_code/Web_Projects/fitness_ag/src/assets/images/MuscleMap1.png";
 
 const HeroBanner = () => {
