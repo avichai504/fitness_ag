@@ -42,7 +42,6 @@ const HeroBanner = () => {
         </Typography>
         <Button
           onClick={scrollToExercises}
-          // href="#exercises"
           variant="contained"
           color="error"
           fontSize="18px"
