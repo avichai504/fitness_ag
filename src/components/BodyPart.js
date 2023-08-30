@@ -18,7 +18,7 @@ const BodyPart = ({ item, setBodyPart, bodyPart }) => {
         cursor: "pointer",
         gap: "47px",
       }}
-      onClick={() => {  //! 2e2e2e2e
+      onClick={() => {  //! TEST
         setBodyPart(item);
         // console.log(item);
         window.scrollTo({ top: 1780, left: 100, behavior: "smooth" });
