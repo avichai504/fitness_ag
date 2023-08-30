@@ -6,11 +6,14 @@ import SearchExercises from "../components/SearchExercises";
 import Exercises from "../components/Exercises";
 
 const Home = () => {
+  
   const [bodyPart, setBodyPart] = useState("all");
   const [exercises, setExercises] = useState([]);
   const [inputUser, setInputUser] = useState("");
   
+  
   // console.log(inputUser) //! I have made it!
+
   return (
     <Box>
       <HeroBanner />
@@ -24,18 +27,10 @@ const Home = () => {
         setExercises={setExercises}
         bodyPart={bodyPart}
         exercises={exercises}
-        inputUser={inputUser}  //* This is my addition
-        />
+        inputUser={inputUser} //* This is my addition
+      />
     </Box>
   );
 };
 
 export default Home;
-
-
-
-//? This is how we can comment questions
-//! This is how we can comment warnings
-//* This is how we can comment important notes
-// This is normal
-

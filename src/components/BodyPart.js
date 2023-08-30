@@ -18,10 +18,10 @@ const BodyPart = ({ item, setBodyPart, bodyPart }) => {
         cursor: "pointer",
         gap: "47px",
       }}
-      onClick={() => {
+      onClick={() => {  //! 2e2e2e2e
         setBodyPart(item);
-        console.log(item);
-        window.scrollTo({ top: 1800, left: 100, behavior: "smooth" });
+        // console.log(item);
+        window.scrollTo({ top: 1780, left: 100, behavior: "smooth" });
       }}
     >
       <img

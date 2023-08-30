@@ -19,15 +19,15 @@ const SearchExercises = ({
         "https://exercisedb.p.rapidapi.com/exercises/bodyPartList",
         exerciseOptions
       );
-      setBodyParts(["all", ...bodyPartsData]); // add 'all' to the beginning of the array
+      setBodyParts([...bodyPartsData]); // you can add 'all' to the beginning of the array
     };
     fetchExercisesData(); // call the function immediately, as soon as the app starts
   }, []);
 
   const handleSearch = async () => {
-    window.scrollTo({top:1830, behavior:"smooth"})
+    window.scrollTo({ top: 1790, behavior: "smooth" });
     if (search) {
-      // console.log(search)  //! Here is the  search value
+      // console.log(search); //! Here is the  search value
       const exercisesData = await fetchData(
         "https://exercisedb.p.rapidapi.com/exercises",
         exerciseOptions
@@ -39,7 +39,7 @@ const SearchExercises = ({
           exercise.equipment.toLocaleLowerCase().includes(search) ||
           exercise.bodyPart.toLocaleLowerCase().includes(search)
       );
-      setInputUser(search); // set the inputUser state to the search value
+      setInputUser(search); //* set the inputUser state to the search value
       setSearch(""); // clear search field
       setExercises(searchedExercises);
     }
@@ -76,12 +76,9 @@ const SearchExercises = ({
           }}
           placeholder="Search Exercises"
           type="text"
-          
-          onKeyDown={(e)=> {
-            if(e.key === "Enter")
-            handleSearch()
+          onKeyDown={(e) => {
+            if (e.key === "Enter") handleSearch();
           }}
-          
         />
         <Button
           className="search-btn"
@@ -104,7 +101,10 @@ const SearchExercises = ({
       </Box>
       <Box sx={{ position: "relative", width: "100%", p: "20px" }}>
         <HorizontalScrollbar
-          data={bodyParts} bodyParts setBodyPart={setBodyPart} bodyPart={bodyPart}
+          data={bodyParts}
+          bodyParts
+          setBodyPart={setBodyPart}
+          bodyPart={bodyPart}
         />
       </Box>
     </Stack>
