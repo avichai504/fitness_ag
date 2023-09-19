@@ -23,7 +23,7 @@ const Navbar = () => {
     };
   }, []);
 
-  const fontSizeBasedOnScroll = scrollY > 5 ? "40px" : "46px";
+  const fontSizeBasedOnScroll = scrollY > 5 ? "46px" : "46px";
 
   return (
     <Stack
@@ -34,12 +34,12 @@ const Navbar = () => {
         mt: { sm: "32px", xs: "20px" },
         justifyContent: "none",
         px: "20px",
-        backgroundColor: scrollY > 5 ? "#FFFFFF" : "transparent",
-        transition: "background-color 0.6s, font-size 0.6s",
+        backgroundColor: scrollY > 50 ? "" : "transparent",
+        backdropFilter: scrollY > 50 ? "blur(6px)" : "none",
+        transition: "background-color 1s, font-size 1s, backdrop-filter 1s",
         position: "fixed",
-        width: "100%",
         zIndex: 1000,
-        top: 0,
+        top: -32,
       }}
     >
       <Link to="/">
