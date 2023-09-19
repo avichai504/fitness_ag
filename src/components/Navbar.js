@@ -10,7 +10,6 @@ const Navbar = () => {
   useEffect(() => {
     const handleScroll = () => {
       setScrollY(window.scrollY);
-      // Adjust these values based on your actual section positions
       if (window.scrollY >= 1500) {
         setActiveLink("experience");
       } else {
@@ -24,6 +23,8 @@ const Navbar = () => {
     };
   }, []);
 
+  const fontSizeBasedOnScroll = scrollY > 5 ? "40px" : "46px";
+
   return (
     <Stack
       direction="row"
@@ -33,12 +34,12 @@ const Navbar = () => {
         mt: { sm: "32px", xs: "20px" },
         justifyContent: "none",
         px: "20px",
-        backgroundColor: scrollY > 5 ? "#FFFFFF" : "transparent", // change threshold as needed
-        transition: "background-color 0.6s",
+        backgroundColor: scrollY > 5 ? "#FFFFFF" : "transparent",
+        transition: "background-color 0.6s, font-size 0.6s",
         position: "fixed",
         width: "100%",
         zIndex: 1000,
-        top:0,
+        top: 0,
       }}
     >
       <Link to="/">
@@ -48,7 +49,12 @@ const Navbar = () => {
           style={{ width: "68px", height: "68px", margin: "0 20px" }}
         />
       </Link>
-      <Stack direction="row" gap="40px" fontSize="36px" alignItems="flex-end">
+      <Stack
+        direction="row"
+        gap="40px"
+        fontSize={fontSizeBasedOnScroll}
+        alignItems="flex-end"
+      >
         <Link
           to="/"
           style={{
@@ -70,6 +76,32 @@ const Navbar = () => {
         >
           Experience
         </a>
+      </Stack>
+      <Stack
+        direction="row"
+        gap="40px"
+        fontSize={fontSizeBasedOnScroll}
+        alignItems="flex-end"
+        sx={{ pl: "500px" }}
+      >
+        <Link
+          to="/login"
+          style={{
+            textDecoration: "none",
+            color: "#3A1212",
+          }}
+        >
+          Login
+        </Link>
+        <Link
+          to="/register"
+          style={{
+            textDecoration: "none",
+            color: "#3A1212",
+          }}
+        >
+          Register
+        </Link>
       </Stack>
     </Stack>
   );
