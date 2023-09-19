@@ -1,14 +1,45 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Stack } from "@mui/material";
 import Logo from "../assets/images/Logo.png";
 
 const Navbar = () => {
+  const [scrollY, setScrollY] = useState(window.scrollY);
+  const [activeLink, setActiveLink] = useState("home"); // by default, home is active
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+      // Adjust these values based on your actual section positions
+      if (window.scrollY >= 1500) {
+        setActiveLink("experience");
+      } else {
+        setActiveLink("home");
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <Stack
       direction="row"
       justifyContent="space-around"
-      sx={{ gap:{sm: '122px', xs: '40px'}, mt: { sm: '32px', xs: '20px'}, justifyContent: 'none'}} px='20px'
+      sx={{
+        gap: { sm: "122px", xs: "40px" },
+        mt: { sm: "32px", xs: "20px" },
+        justifyContent: "none",
+        px: "20px",
+        backgroundColor: scrollY > 5 ? "#FFFFFF" : "transparent", // change threshold as needed
+        transition: "background-color 0.6s",
+        position: "fixed",
+        width: "100%",
+        zIndex: 1000,
+        top:0,
+      }}
     >
       <Link to="/">
         <img
@@ -23,14 +54,19 @@ const Navbar = () => {
           style={{
             textDecoration: "none",
             color: "#3A1212",
-            borderBottom: "3px solid #FF2625",
+            borderBottom: activeLink === "home" ? "10px solid #FF2625" : "none",
           }}
         >
           Home
         </Link>
         <a
           href="#experience"
-          style={{ textDecoration: "none", color: "#3A1212", borderBottom: "3px solid #FF2625" }}
+          style={{
+            textDecoration: "none",
+            color: "#3A1212",
+            borderBottom:
+              activeLink === "experience" ? "10px solid #FF2625" : "none",
+          }}
         >
           Experience
         </a>
