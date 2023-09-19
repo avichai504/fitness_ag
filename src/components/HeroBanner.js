@@ -1,63 +1,95 @@
-import React from "react";
-import { Box, Typography, Button } from "@mui/material";
-import HeroBannerImage from "C://VS_code/Web_Projects/fitness_ag/src/assets/images/MuscleMap1.png";
+import React, { useState, useEffect } from "react";
+import { Box, Typography, Button, Stack } from "@mui/material";
+import { styled } from "@mui/material";
+
+const StyledButton = styled(Button)(({ theme }) => ({
+  padding: "15px",
+  marginTop: theme.spacing(12), // equivalent to "120px"
+  borderRadius: "20px",
+  fontSize: "26px",
+}));
 
 const HeroBanner = () => {
+  const [scrolled, setScrolled] = useState(false);
+
+  const handleScroll = () => {
+    const offset = window.scrollY;
+    if (offset > 150) {
+      setScrolled(true);
+    } else {
+      setScrolled(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   const scrollToExercises = () => {
-    window.scrollTo({top:1120, behavior:"smooth" })
-
-  }
-
+    window.scrollTo({ top: 2500, behavior: "smooth" });
+  };
 
   return (
     <Box
       sx={{
-    
-        mt: { lg: "190px", xs: "70px" },
+        backgroundColor: "", // Black background
+        mt: { lg: "390px", xs: "70px" },
         ml: { sm: "20px" },
-        mx: { lg: "0", xs: "20px" },
+        mx: { lg: "10px", xs: "20px" },
       }}
       position="relative"
-      p="20px"
+      p="40px"
+      pb="400px"
     >
-      <Box
+      <Typography
         sx={{
-          mt: { lg: "-77px", xs: "70px" },
+          transform: scrolled
+            ? "scale(1.29) perspective(5000px) rotateX(360deg) rotateY(10deg) "
+            : "none", // 3D effect
+          transition: "transform 0.85s",
         }}
+        pb="100px"
+        pl="155px"
+        color="black"
+        fontWeight="750"
+        fontSize="38px"
       >
-        <Typography color="#FF2625" fontWeight="600" fontSize="36px">
-          Fitness Club
-        </Typography>
-        <Typography
-          fontWeight={700}
-          sx={{ fontSize: { lg: "44px", xs: "40px" } }}
-          mb="23px"
-          m="30px"
-        >
-          Sweat, Smile <br /> and Repeat
-        </Typography>
-        <Typography fontSize="32px" lineHeight={"35px"} mb={2.59}>
-          Check out the most effective workouts <br /> for your body
-        </Typography>
-        <Button
+        Welcome! <br /> I'm Avichai and this is my React project.
+        <br /> Have fun :)
+      </Typography>
+
+      <Typography fontSize="55px" lineHeight={"60px"} mb={3.59} color="gray">
+        Regular exercise and training are essential for the body. They not only
+        improve your physical health but also uplift your mental well-being.
+      </Typography>
+
+      <Stack direction={"row"} pl="0px" gap="150px">
+        <StyledButton
           onClick={scrollToExercises}
           variant="contained"
           color="error"
-          fontSize="18px"
-          
-          sx={{
-            backgroundColor: "black",
-            padding: "18px",
-            marginTop: "20px",
-            fontSize: "18px",
-            boxShadow: '0px 0px 12px 12px rgb(241 0 0 / 42%), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 1px 5px 0px rgba(0,0,0,0.12)',
-            borderRadius: "20px",
-          }}
+        >
+          Explore Body Map
+        </StyledButton>
+        <StyledButton
+          onClick={scrollToExercises}
+          variant="contained"
+          color="error"
         >
           Explore Exercises
-        </Button>
-      </Box>
+        </StyledButton>
+        <StyledButton
+          onClick={scrollToExercises}
+          variant="contained"
+          color="error"
+        >
+          Explore Exercises
+        </StyledButton>
+      </Stack>
+
       <Typography
         fontWeight={190}
         fontSize="140px"
@@ -66,19 +98,17 @@ const HeroBanner = () => {
         mt="90px"
         sx={{
           opacity: 0.39,
-          display: { lg: "block", xs: "none" }
+          display: { lg: "block", xs: "none" },
         }}
       >
         Exercises
       </Typography>
-      <img src={HeroBannerImage} alt="HeroBanner" className="hero-banner-img" />
+
+      <Box sx={{ height: "300px", width: "500px", backgroundColor: "gray" }}>
+        {/* Placeholder for the reactive map. Adjust height and width as needed */}
+      </Box>
     </Box>
   );
 };
 
 export default HeroBanner;
-
-//! We is it don't work?
-//* ??
-
-
