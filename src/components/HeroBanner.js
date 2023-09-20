@@ -94,7 +94,7 @@ const HeroBanner = () => {
         fontWeight={190}
         fontSize="140px"
         color="#FF2625"
-        mb="90px"
+        mb="-90px"
         mt="90px"
         sx={{
           opacity: 0.39,
@@ -104,9 +104,7 @@ const HeroBanner = () => {
         Exercises
       </Typography>
 
-      <Box sx={{ height: "300px", width: "500px", backgroundColor: "gray" }}>
-        {/* Placeholder for the reactive map. Adjust height and width as needed */}
-      </Box>
+      
     </Box>
   );
 };
