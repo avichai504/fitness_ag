@@ -1,4 +1,5 @@
 body {
+  zoom: 48%;
   font-family: 'Josefin Sans';
   background-color: hsla(0, 100%, 50%, 0.1);
 }
