@@ -2,6 +2,11 @@ body {
   zoom: 48%;
   font-family: 'Josefin Sans';
   background-color: hsla(0, 100%, 50%, 0.1);
+  background-image: url("../src/assets/images/gymWoman.jpg"); /* Update the path as needed */
+  background-size: cover; /* This will ensure the image covers the entire viewport */
+  background-repeat: no-repeat; /* This will prevent the image from repeating */
+  background-attachment: fixed; /* This will make the background image fixed, content will move over it*/
+  background-position: center;
 }
 
 * {
