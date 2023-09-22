@@ -1,110 +1,108 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { Stack } from "@mui/material";
-import Logo from "../assets/images/Logo.png";
+import React from "react";
+import AppBar from "@mui/material/AppBar";
+import Toolbar from "@mui/material/Toolbar";
+import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import HomeIcon from "@mui/icons-material/Home";
+import SportsGymnasticsIcon from "@mui/icons-material/SportsGymnastics";
+import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
+import SearchIcon from "@mui/icons-material/Search";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import PropTypes from "prop-types";
+import Slide from "@mui/material/Slide";
+import useScrollTrigger from "@mui/material/useScrollTrigger";
 
-const Navbar = () => {
-  const [scrollY, setScrollY] = useState(window.scrollY);
-  const [activeLink, setActiveLink] = useState("home"); // by default, home is active
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-      if (window.scrollY >= 1500) {
-        setActiveLink("experience");
-      } else {
-        setActiveLink("home");
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
-  const fontSizeBasedOnScroll = scrollY > 5 ? "46px" : "46px";
+function HideOnScroll(props) {
+  const { children, window } = props;
+  const trigger = useScrollTrigger({
+    target: window ? window() : undefined,
+  });
 
   return (
-    <Stack
-      direction="row"
-      justifyContent="space-around"
-      sx={{
-        gap: { sm: "122px", xs: "40px" },
-        mt: { sm: "32px", xs: "20px" },
-        justifyContent: "none",
-        px: "20px",
-        backgroundColor: scrollY > 50 ? "" : "transparent",
-        backdropFilter: scrollY > 50 ? "blur(6px)" : "none",
-        transition: "background-color 1s, font-size 1s, backdrop-filter 1s",
-        position: "fixed",
-        zIndex: 1000,
-        top: -32,
-      }}
-    >
-      <Link to="/">
-        <img
-          src={Logo}
-          alt="Logo"
-          style={{ width: "68px", height: "68px", margin: "0 20px" }}
-        />
-      </Link>
-      <Stack
-        direction="row"
-        gap="40px"
-        fontSize={fontSizeBasedOnScroll}
-        alignItems="flex-end"
-      >
-        <Link
-          to="/"
-          style={{
-            textDecoration: "none",
-            color: "#3A1212",
-            borderBottom: activeLink === "home" ? "10px solid #FF2625" : "none",
-          }}
-        >
-          Home
-        </Link>
-        <a
-          href="#experience"
-          style={{
-            textDecoration: "none",
-            color: "#3A1212",
-            borderBottom:
-              activeLink === "experience" ? "10px solid #FF2625" : "none",
-          }}
-        >
-          Experience
-        </a>
-      </Stack>
-      <Stack
-        direction="row"
-        gap="40px"
-        fontSize={fontSizeBasedOnScroll}
-        alignItems="flex-end"
-        sx={{ pl: "500px" }}
-      >
-        <Link
-          to="/login"
-          style={{
-            textDecoration: "none",
-            color: "#3A1212",
-          }}
-        >
-          Login
-        </Link>
-        <Link
-          to="/register"
-          style={{
-            textDecoration: "none",
-            color: "#3A1212",
-          }}
-        >
-          Register
-        </Link>
-      </Stack>
-    </Stack>
+    <Slide appear={false} direction="down" in={!trigger}>
+      {children}
+    </Slide>
   );
+}
+
+HideOnScroll.propTypes = {
+  children: PropTypes.element.isRequired,
+  window: PropTypes.func,
 };
 
-export default Navbar;
+export default function Navigator(props) {
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleMenuClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleMenuClose = () => {
+    setAnchorEl(null);
+  };
+
+  const handleNavigation = (location) => {
+    // Assuming you'd use something like 'react-scroll' or another method to navigate/scroll
+    // scrollTo(location);
+    handleMenuClose();
+  };
+
+  return (
+    <React.Fragment>
+      <HideOnScroll {...props}>
+        <AppBar color="" position="fixed">
+            <Toolbar style={{ height: "85px" }}>
+              <div style={{ marginRight: "auto" }}>
+                <Button
+                  color="inherit"
+                  onClick={() => handleNavigation("home")}
+                >
+                  <HomeIcon fontSize="large" />
+                  <Typography variant="h4">Home</Typography>
+                </Button>
+                <Button
+                  color="inherit"
+                  onClick={() => handleNavigation("bodyMap")}
+                >
+                  <SportsGymnasticsIcon fontSize="large" />
+                  <Typography variant="h4">Body Map</Typography>
+                </Button>
+                <Button
+                  color="inherit"
+                  onClick={() => handleNavigation("exercises")}
+                >
+                  <FitnessCenterIcon fontSize="large" />
+                  <Typography variant="h4">exercises</Typography>
+                </Button>
+                <Button color="inherit" onClick={handleMenuClick}>
+                  <SearchIcon fontSize="large" />
+                  <Typography variant="h4">more</Typography>
+                </Button>
+                <Menu
+                  anchorEl={anchorEl}
+                  keepMounted
+                  open={Boolean(anchorEl)}
+                  onClose={handleMenuClose}
+                >
+                  {/* Add menu items here */}
+                  <MenuItem onClick={handleMenuClose}>Option 1</MenuItem>
+                  <MenuItem onClick={handleMenuClose}>Option 2</MenuItem>
+                </Menu>
+              </div>
+              <div style={{ marginLeft: "auto" }}>
+                <Button color="inherit">
+                  <Typography variant="h4">login</Typography>
+                </Button>
+                <Button color="inherit">
+                  <Typography variant="h4">register</Typography>
+                </Button>
+              </div>
+              <AccountCircleIcon fontSize="large" />
+            </Toolbar>
+        </AppBar>
+      </HideOnScroll>
+    </React.Fragment>
+  );
+}
