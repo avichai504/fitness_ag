@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import { fetchData, bodyMapOptions } from "../utils/fetchData";
+import Loader from "./Loader";
 
-function BodyMap() {
+const BodyMap = () => {
   const [image, setImage] = useState("");
   const [selectedMuscle, setSelectedMuscle] = useState("all");
+  const [loading, setLoading] = useState(false);
 
   const muscles = [
     "all",
@@ -37,6 +39,7 @@ function BodyMap() {
 
   useEffect(() => {
     const fetchImage = async () => {
+      setLoading(true);
       const url = `https://muscle-group-image-generator.p.rapidapi.com/getImage?muscleGroups=${selectedMuscle}&color=200%2C10%2C8&transparentBackground=1`;
 
       try {
@@ -50,12 +53,14 @@ function BodyMap() {
         setImage(imageUrl);
       } catch (error) {
         console.error(error.message);
+        setImage(false);
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchImage();
   }, [selectedMuscle]);
-
   return (
     <div className="bodyMapContainer">
       <select
@@ -69,10 +74,11 @@ function BodyMap() {
           </option>
         ))}
       </select>
-      <img src={image} alt={selectedMuscle} />
+      {loading ? <Loader /> : <img src={image} alt={selectedMuscle} />} 
+
     </div>
   );
-}
+};
 
 export default BodyMap;
 
