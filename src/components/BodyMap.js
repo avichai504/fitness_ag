@@ -1,46 +1,141 @@
+/* eslint-disable jsx-a11y/img-redundant-alt */
 import { useEffect, useState } from "react";
 import { fetchData, bodyMapOptions } from "../utils/fetchData";
 import Loader from "./Loader";
 
 const BodyMap = () => {
-  const [image, setImage] = useState("");
-  const [selectedMuscle, setSelectedMuscle] = useState("all");
-  const [loading, setLoading] = useState(false);
+  const MAX_MUSCLES_SELECTOR = 12;
 
-  const muscles = [
-    "all",
-    "all_lower",
-    "all_upper",
-    "abductors",
-    "abs",
-    "adductors",
-    "back",
-    "back_lower",
-    "back_upper",
-    "biceps",
-    "calfs",
-    "chest",
-    "core",
-    "core_lower",
-    "core_upper",
-    "forearms",
-    "gluteus",
-    "hamstring",
-    "hands",
-    "latissimus",
-    "legs",
-    "neck",
-    "quadriceps",
-    "shoulders",
-    "shoulders_back",
-    "shoulders_front",
-    "triceps",
-  ];
+  const [image, setImage] = useState("");
+  const [selectedMuscles, setSelectedMuscles] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [selectorCount, setSelectorCount] = useState(0);
+
+  const muscles = {
+    General: [
+      "all",
+      "all_lower",
+      "all_upper",
+      "abs",
+      "core",
+      "core_lower",
+      "core_upper",
+    ],
+    Upper: [
+      "chest",
+      "latissimus",
+      "back",
+      "back_lower",
+      "back_upper",
+      "biceps",
+      "triceps",
+      "neck",
+    ],
+    Limbs: [
+      "forearms",
+      "hands",
+      "shoulders",
+      "shoulders_back",
+      "shoulders_front",
+      "legs",
+      "calfs",
+    ],
+    Lower: [
+      "abductors",
+      "adductors",
+      "gluteus",
+      "hamstring",
+      "quadriceps",
+      "",
+      "",
+      "Clear All",
+    ],
+  };
+
+  const muscleMapping = {
+    all: "All",
+    all_lower: "Lower All",
+    all_upper: "Upper All",
+    abs: "Abs",
+    core: "Core",
+    core_lower: "Lower Core",
+    core_upper: "Upper Core",
+    chest: "Chest",
+    latissimus: "Latissimus",
+    back: "Back",
+    back_lower: "Lower Back",
+    back_upper: "Upper Back",
+    biceps: "Biceps",
+    triceps: "Triceps",
+    neck: "Neck",
+    forearms: "Forearms",
+    hands: "Hands",
+    shoulders: "Shoulders",
+    shoulders_back: "Back Shoulders",
+    shoulders_front: "Front Shoulders",
+    legs: "Legs",
+    calfs: "Calves",
+    abductors: "Abductors",
+    adductors: "Adductors",
+    gluteus: "Gluteus",
+    hamstring: "Hamstring",
+    quadriceps: "Quadriceps",
+    "Clear All": "Clear All",
+  };
+
+  const handleClearAllMuscles = () => {
+    setSelectorCount(0);
+    setSelectedMuscles([]);
+  };
+
+  const handleMuscleClick = (current_muscle) => {
+    if (current_muscle === "Clear All") {
+      if (selectorCount > 0) handleClearAllMuscles();
+      return;
+    }
+    if (selectorCount >= MAX_MUSCLES_SELECTOR) return;
+
+    setSelectedMuscles((preview_items_list) => {
+      if (preview_items_list.includes(current_muscle)) {
+        setSelectorCount((prevCount) => prevCount - 1);
+        return preview_items_list.filter((m) => m !== current_muscle);
+      }
+
+      setSelectorCount((prevCount) => prevCount + 1);
+      return [...preview_items_list, current_muscle];
+    });
+  };
+
+  const generateColor = (index) => {
+    const r = index % 3 === 0 ? 255 : 200 - (index % 13) * 15;
+    const g = index % 3 === 1 ? 255 : 10 + (index % 13) * 10;
+    const b = index % 3 === 2 ? 255 : 8 + (index % 13) * 21;
+
+    return `${r},${g},${b}`;
+  };
 
   useEffect(() => {
     const fetchImage = async () => {
       setLoading(true);
-      const url = `https://muscle-group-image-generator.p.rapidapi.com/getImage?muscleGroups=${selectedMuscle}&color=200%2C10%2C8&transparentBackground=1`;
+      let url = "";
+
+      if (selectedMuscles.length === 0) {
+        url =
+          "https://muscle-group-image-generator.p.rapidapi.com/getBaseImage?transparentBackground=1";
+      } else if (selectedMuscles.length >= 1) {
+        const colors = selectedMuscles
+          .map((_, index) => generateColor(index))
+          .map((rgb) =>
+            rgb
+              .split(",")
+              .map((val) => parseInt(val).toString(16).padStart(2, "0"))
+              .join("")
+          ); // Convert RGB to HEX
+
+        url = `https://muscle-group-image-generator.p.rapidapi.com/getIndividualColorImage?muscleGroups=${selectedMuscles.join(
+          ","
+        )}&colors=${colors.join(",")}&transparentBackground=1`;
+      }
 
       try {
         const responseData = await fetchData(
@@ -60,61 +155,52 @@ const BodyMap = () => {
     };
 
     fetchImage();
-  }, [selectedMuscle]);
+  }, [selectedMuscles]);
+
   return (
     <div className="bodyMapContainer">
-      <select
-        value={selectedMuscle}
-        onChange={(e) => setSelectedMuscle(e.target.value)}
-        className="muscleSelect"
-      >
-        {muscles.map((muscle) => (
-          <option key={muscle} value={muscle}>
-            {muscle}
-          </option>
-        ))}
-      </select>
-      {loading ? <Loader /> : <img src={image} alt={selectedMuscle} />} 
+      <table className="muscleTable">
+        <tr>
+          {Object.keys(muscles).map((group) => (
+            <th key={group}>{group}</th>
+          ))}
+        </tr>
 
+        {Object.values(muscles)
+          .reduce((max, current) =>
+            current.length > max.length ? current : max
+          )
+          .map((_, index) => (
+            <tr key={index}>
+              {Object.values(muscles).map((musclesList) => (
+                <td key={musclesList[index] || index}>
+                  {musclesList[index] && (
+                    <button
+                      className={
+                        selectedMuscles.includes(musclesList[index])
+                          ? "selected"
+                          : musclesList[index] === "Clear All"
+                          ? "clearAllBtn"
+                          : ""
+                      }
+                      onClick={() => handleMuscleClick(musclesList[index])}
+                    >
+                      {muscleMapping[musclesList[index]]}
+                    </button>
+                  )}
+                </td>
+              ))}
+            </tr>
+          ))}
+      </table>
+
+      {loading ? (
+        <Loader />
+      ) : (
+        <img className="bodyMapImage" src={image} alt="Muscle Image" />
+      )}
     </div>
   );
 };
 
 export default BodyMap;
-
-//? Empty body map
-//! 'https://muscle-group-image-generator.p.rapidapi.com/getBaseImage?transparentBackground=1'
-//? One color for all muscle groups body map
-//! `https://muscle-group-image-generator.p.rapidapi.com/getImage?muscleGroups=${props.muscleGroups}&color=200%2C10%2C8&transparentBackground=1`
-//? Individual color for each muscle groups
-//! 'https://muscle-group-image-generator.p.rapidapi.com/getIndividualColorImage?muscleGroups=chest%2Ctriceps%2Cshoulders&colors=ff0000%2C0f0&transparentBackground=1';
-
-// [
-// "all",
-// "all_lower",
-// "all_upper",
-// "abductors",
-// "abs",
-// "adductors",
-// "back",
-// "back_lower",
-// "back_upper",
-// "biceps",
-// "calfs",
-// "chest",
-// "core",
-// "core_lower",
-// "core_upper",
-// "forearms",
-// "gluteus",
-// "hamstring",
-// "hands",
-// "latissimus",
-// "legs",
-// "neck",
-// "quadriceps",
-// "shoulders",
-// "shoulders_back",
-// "shoulders_front",
-// "triceps"
-//   ]

@@ -15,7 +15,7 @@ const Home = () => {
   return (
     <Box>
       <Welcome />
-      <MenuCards/>
+      <MenuCards />
       <BodyMap />
       <SearchExercises
         setExercises={setExercises}

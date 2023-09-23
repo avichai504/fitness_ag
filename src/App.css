@@ -160,29 +160,75 @@ body {
 
 .bodyMapContainer {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  padding: 20px;
-  /* border: 5px solid #e80d0da3; */
-  /* border-radius: 5px; */
+  /* padding: 20px; */
   width: 1250px;
-  margin: 0 auto;
+  /* margin: 0 auto; */
   min-height: 1550px;
+  /* background-color: #ffffff; */
+
 }
 
-.muscleSelect {
-  width: 25%;
-  padding: 12px 21px;
-  margin-bottom: 50px;
-  border: 3px solid #000000;
-  border-radius: 18px;
-  font-size: 32px;
-  cursor: pointer;
+.muscleTable {
+  height: min-content;
+  font-size: 290%;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-weight: 500;
+  border-collapse: collapse;
+  margin-top: -130px;
+}
+
+.muscleTable td, 
+.muscleTable th {
+  border: 1px solid #fff;
+  padding: 8px;
+  width: 150px;  /* Adjust as needed */
+  height: 115px;  /* Adjust as needed */
+  text-overflow: ellipsis;  /* Display '...' for overflowed texts */
+  white-space: nowrap;  /* Prevent texts from wrapping to the next line */
+}
+
+
+.muscleTable th {
+  background-color: #000000d1;
+  color: white;
+}
+
+.muscleTable button {
+  font-size: 93%;
+  font-weight: 600;
+  /* display: block;  */
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff;
+  /* color: white; */
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.2s;
+}
+
+.muscleTable button:hover {
+  background-color: #e8de26;
+}
+
+.muscleTable button.selected {
+  background-color: #41b317;
+  color: black;
+}
+.muscleTable button.clearAllBtn {
+  /* background-color: #ff0000; */
+  color:#ff0000;
+  /* border-color: #ff0000; */
+}
+.muscleTable button.clearAllBtn:hover {
+  background-color: #e8de26;
 }
 
 .bodyMapContainer img {
-  max-width: 120%;
+  max-width: 115%;
 }
 
 .flip-stack {
