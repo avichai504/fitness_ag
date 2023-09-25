@@ -4,7 +4,7 @@ import { fetchData, bodyMapOptions } from "../utils/fetchData";
 import Loader from "./Loader";
 
 const BodyMap = () => {
-  const MAX_MUSCLES_SELECTOR = 12;
+  const MAX_MUSCLES_SELECTOR = 2;
 
   const [image, setImage] = useState("");
   const [selectedMuscles, setSelectedMuscles] = useState([]);
@@ -52,6 +52,15 @@ const BodyMap = () => {
     ],
   };
 
+  const workoutPlans = {
+    "Plan 1": ["abs", "core", "chest"],
+    "Plan 2": ["shoulders", "shoulders front", "shoulders back", "triceps"],
+    "Plan 3": ["latissimus", "back", "back lower", "back upper"],
+    "Plan 4": ["biceps", "forearms", "hands", "neck"],
+    "Plan 5": ["legs", "calfs", "quadriceps", "hamstring"],
+    "Plan 6": ["abductors", "adductors", "gluteus"],
+  };
+
   const muscleMapping = {
     all: "All",
     all_lower: "Lower All",
@@ -84,32 +93,43 @@ const BodyMap = () => {
   };
 
   const handleClearAllMuscles = () => {
-    setSelectorCount(0);
-    setSelectedMuscles([]);
+    if (selectorCount) {
+      setSelectorCount(0);
+      setSelectedMuscles([]);
+    }
   };
 
   const handleMuscleClick = (current_muscle) => {
-    if (current_muscle === "Clear All") {
-      if (selectorCount > 0) handleClearAllMuscles();
-      return;
+    const clearAll = current_muscle === "Clear All";
+    const alreadySelected = selectedMuscles.includes(current_muscle);
+
+    if (clearAll && selectorCount > 0) {
+      handleClearAllMuscles();
+      return [];
     }
-    if (selectorCount >= MAX_MUSCLES_SELECTOR) return;
+    if (clearAll) {
+      return [];
+    }
 
-    setSelectedMuscles((preview_items_list) => {
-      if (preview_items_list.includes(current_muscle)) {
-        setSelectorCount((prevCount) => prevCount - 1);
-        return preview_items_list.filter((m) => m !== current_muscle);
-      }
+    if (selectorCount >= MAX_MUSCLES_SELECTOR && !alreadySelected) return[];
 
-      setSelectorCount((prevCount) => prevCount + 1);
-      return [...preview_items_list, current_muscle];
+    setSelectedMuscles((prevItems) => {
+      const newCount = clearAll
+        ? 0
+        : alreadySelected
+        ? selectorCount - 1
+        : selectorCount + 1;
+      setSelectorCount(newCount);
+
+      if (alreadySelected) return prevItems.filter((m) => m !== current_muscle);
+      return [...prevItems, current_muscle];
     });
   };
 
   const generateColor = (index) => {
-    const r = index % 3 === 0 ? 255 : 200 - (index % 13) * 15;
-    const g = index % 3 === 1 ? 255 : 10 + (index % 13) * 10;
-    const b = index % 3 === 2 ? 255 : 8 + (index % 13) * 21;
+    const r = index % 3 === 0 ? 255 : 200 - 40 * index * Math.random();
+    const g = index % 3 === 1 ? 255 : 10 + index * Math.random();
+    const b = index % 3 === 2 ? 255 : 8 + index * Math.random();
 
     return `${r},${g},${b}`;
   };
@@ -158,7 +178,7 @@ const BodyMap = () => {
   }, [selectedMuscles]);
 
   return (
-    <div className="bodyMapContainer">
+    <div id="body-map-container" className="bodyMapContainer">
       <table className="muscleTable">
         <tr>
           {Object.keys(muscles).map((group) => (
