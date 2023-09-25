@@ -277,3 +277,22 @@ body {
   background: rgb(160, 144, 74);
   border-radius: 70px;
 }
+
+
+.exercise-container {
+  position: relative;
+  display: inline-flex;
+  /* margin-right: 150px;  */
+  margin-bottom: 100px;
+}
+
+.instructions {
+  position: absolute;
+  top: -50px; 
+  right: 110%;
+  width: 1000px;
+  font-size: 45px;
+  background: rgb(0, 0, 0);
+  color: white;
+}
+
