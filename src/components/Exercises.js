@@ -15,6 +15,7 @@ const Exercises = ({ exercises, setExercises, bodyPart, inputUser }) => {
     return inputUser || bodyPart !== "all" ? (
       <Typography
         fontWeight={500}
+        color={"white"}
         sx={{ fontSize: { lg: "54px", xs: "30px" } }}
         mb="20px"
         textAlign="center"
@@ -89,19 +90,7 @@ const Exercises = ({ exercises, setExercises, bodyPart, inputUser }) => {
           <ExerciseCard key={idx} exercise={exercise} />
         ))}
       </Stack>
-      <Stack sx={{ mt: { lg: "114px", xs: "70px" } }} alignItems="center">
-        {exercises.length > 9 && (
-          <Pagination
-            color="standard"
-            shape="rounded"
-            defaultPage={1}
-            count={Math.ceil(exercises.length / exercisesPerPage)}
-            page={currentPage}
-            onChange={paginate}
-            size="large"
-          />
-        )}
-      </Stack>
+      
     </Box>
   );
 };

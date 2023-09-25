@@ -1,4 +1,4 @@
-import { Box, Typography, Stack } from "@mui/material";
+import { Box, Typography, Stack, Button } from "@mui/material";
 import "../App.css";
 import fitnessModel1 from "../assets/images/fitnessModel1.jpg";
 import food7 from "../assets/images/food7.jpg";
@@ -6,36 +6,49 @@ import anatomy3 from "../assets/images/anatomy3.jpg";
 
 const MenuCards = () => {
   const content = [
-    { image: anatomy3, text: "Learn About Human Anatomy" },
-    { image: fitnessModel1, text: "Explore Exercises" },
-    { image: food7, text: "Unique diet program with AI" },
+    {
+      id: "body-map-container",
+      image: anatomy3,
+      text: "Learn About Human Anatomy",
+    },
+    { id: "search-exercises", image: fitnessModel1, text: "Explore Exercises" },
+    { id: "diet", image: food7, text: "Unique diet program with AI" },
   ];
 
+  const handleScroll = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
-    <Stack className="flip-stack" direction={"row"}>
+    <Stack id="menu-cards" className="flip-stack" direction={"row"}>
       {content.map((item, index) => (
-        <Box key={index} className="flip-box">
-          <Box className="flip">
-            <Box
-              className="front"
-              style={{
-                backgroundImage: `url(${item.image})`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-                backgroundRepeat: "no-repeat",
-              }}
-            >
-              <Typography color={"white"} fontSize={59} align="center">
-                {item.text}
-              </Typography>
-            </Box>
-            <Box className="back">
-              <Typography color={"white"} fontSize={59} align="center">
-                More Info About {item.text}
-              </Typography>
+        <Button key={index} type="button" onClick={() => handleScroll(item.id)}>
+          <Box key={index} className="flip-box">
+            <Box className="flip">
+              <Box
+                className="front"
+                style={{
+                  backgroundImage: `url(${item.image})`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                  backgroundRepeat: "no-repeat",
+                }}
+              >
+                <Typography color={"white"} fontSize={59} align="center">
+                  {item.text}
+                </Typography>
+              </Box>
+              <Box className="back">
+                <Typography color={"white"} fontSize={59} align="center">
+                  More Info About {item.text}
+                </Typography>
+              </Box>
             </Box>
           </Box>
-        </Box>
+        </Button>
       ))}
     </Stack>
   );

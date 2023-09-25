@@ -11,7 +11,7 @@ const SearchExercises = ({
   setInputUser,
 }) => {
   const [search, setSearch] = useState("");
-  const [bodyParts, setBodyParts] = useState([]); // array of body parts to be displayed in the horizontal scrollbar
+  const [bodyParts, setBodyParts] = useState([]); 
 
   useEffect(() => {
     const fetchExercisesData = async () => {
@@ -19,15 +19,15 @@ const SearchExercises = ({
         "https://exercisedb.p.rapidapi.com/exercises/bodyPartList",
         exerciseOptions
       );
-      setBodyParts([...bodyPartsData]); // you can add 'all' to the beginning of the array
+      setBodyParts([...bodyPartsData]); 
     };
-    fetchExercisesData(); // call the function immediately, as soon as the app starts
+    fetchExercisesData(); // fetch body parts as soon as the app start
   }, []);
 
   const handleSearch = async () => {
-    window.scrollTo({ top: 1790, behavior: "smooth" });
     if (search) {
-      // console.log(search); //! Here is the  search value
+      const searchResults = document.getElementById("exercise-cards");
+      searchResults.scrollIntoView({ behavior: "smooth" });
       const exercisesData = await fetchData(
         "https://exercisedb.p.rapidapi.com/exercises",
         exerciseOptions
@@ -46,7 +46,13 @@ const SearchExercises = ({
   };
 
   return (
-    <Stack alignItems="center" justifyContent="center" mt="37px" p="20px">
+    <Stack
+      id="search-exercises"
+      alignItems="center"
+      justifyContent="center"
+      mt="37px"
+      p="20px"
+    >
       <Typography
         fontWeight={70}
         sx={{ fontSize: { lg: "44px", xs: "30px" } }}
