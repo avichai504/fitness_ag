@@ -18,10 +18,12 @@ const BodyPart = ({ item, setBodyPart, bodyPart }) => {
         cursor: "pointer",
         gap: "47px",
       }}
-      onClick={() => {  //! TEST
+      onClick={() => {
         setBodyPart(item);
-        // console.log(item);
-        window.scrollTo({ top: 1780, left: 100, behavior: "smooth" });
+        const searchResults = document.getElementById("exercise-cards");
+        if (searchResults) {
+          searchResults.scrollIntoView({ behavior: "smooth", block: "end" });
+        }
       }}
     >
       <img
