@@ -4,7 +4,7 @@ import { fetchData, bodyMapOptions } from "../utils/fetchData";
 import Loader from "./Loader";
 
 const BodyMap = () => {
-  const MAX_MUSCLES_SELECTOR = 2;
+  const MAX_MUSCLES_SELECTOR = 12;
 
   const [image, setImage] = useState("");
   const [selectedMuscles, setSelectedMuscles] = useState([]);
