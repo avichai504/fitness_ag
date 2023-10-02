@@ -1,8 +1,8 @@
 body {
   zoom: 48%;
   font-family: 'Josefin Sans';
-  background-image: url("../src/assets/images/background4.jpg");
-  /* background-size: cover;  */
+  background-image: url("../src/assets/images/Avatar2.JPG");
+  background-size: cover; 
   /* background-repeat: no-repeat;  */
   background-attachment: fixed;
   background-position: center;

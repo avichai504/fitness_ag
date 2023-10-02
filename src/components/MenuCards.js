@@ -1,8 +1,8 @@
 import { Box, Typography, Stack, Button } from "@mui/material";
 import "../App.css";
-import fitnessModel1 from "../assets/images/fitnessModel1.jpg";
-import food7 from "../assets/images/food7.jpg";
-import anatomy3 from "../assets/images/anatomy3.jpg";
+import fitnessModel1 from "../assets/images/gymWoman.jpg";
+import food7 from "../assets/images/gymMan.jpg";
+import anatomy3 from "../assets/images/gymWoman.jpg";
 
 const MenuCards = () => {
   const content = [
