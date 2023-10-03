@@ -52,14 +52,6 @@ const BodyMap = () => {
     ],
   };
 
-  const workoutPlans = {
-    "Plan 1": ["abs", "core", "chest"],
-    "Plan 2": ["shoulders", "shoulders front", "shoulders back", "triceps"],
-    "Plan 3": ["latissimus", "back", "back lower", "back upper"],
-    "Plan 4": ["biceps", "forearms", "hands", "neck"],
-    "Plan 5": ["legs", "calfs", "quadriceps", "hamstring"],
-    "Plan 6": ["abductors", "adductors", "gluteus"],
-  };
 
   const muscleMapping = {
     all: "All",

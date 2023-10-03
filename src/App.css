@@ -1,11 +1,6 @@
 body {
-  zoom: 48%;
   font-family: 'Josefin Sans';
-  background-image: url("../src/assets/images/Avatar2.JPG");
-  background-size: cover; 
-  /* background-repeat: no-repeat;  */
-  background-attachment: fixed;
-  background-position: center;
+  background-color: #FFFAFB;
 }
 
 * {
@@ -60,14 +55,12 @@ body {
 
 .hero-banner-img {
   position: absolute;
-  right: -40px;
-  top: 80px;
-  width: 860px;
-  height: 910px;
+  right: 40px;
+  top: 0px;
+  width: 700px;
+  height: 900px;
   margin-top: -330px;
-  border-radius: 40px;
-  /* border-radius: 180px 20px 210px 20px; */
-  opacity: 0.9;
+
 }
 
 .exercise-card {
@@ -144,155 +137,8 @@ body {
 
 }
 
-.explore-exercises-btn {
-  box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
-  background-color: #FF2625;
-  color: #fff;
-  border-radius: 4px;
-  padding: 10px 20px;
-}
-
 @media screen and (max-width:400px) {
   .exercise-card {
     width: 280px;
   }
 }
-
-.bodyMapContainer {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  /* padding: 20px; */
-  width: 1250px;
-  /* margin: 0 auto; */
-  min-height: 1550px;
-  /* background-color: #ffffff; */
-
-}
-
-.muscleTable {
-  height: min-content;
-  font-size: 290%;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  font-weight: 500;
-  border-collapse: collapse;
-  margin-top: -130px;
-}
-
-.muscleTable td, 
-.muscleTable th {
-  border: 1px solid #fff;
-  padding: 8px;
-  width: 150px;  /* Adjust as needed */
-  height: 115px;  /* Adjust as needed */
-  text-overflow: ellipsis;  /* Display '...' for overflowed texts */
-  white-space: nowrap;  /* Prevent texts from wrapping to the next line */
-}
-
-
-.muscleTable th {
-  background-color: #000000d1;
-  color: white;
-}
-
-.muscleTable button {
-  font-size: 93%;
-  font-weight: 600;
-  /* display: block;  */
-  width: 100%;
-  height: 100%;
-  background-color: #ffffff;
-  /* color: white; */
-  border: none;
-  padding: 10px;
-  cursor: pointer;
-  border-radius: 5px;
-  transition: background-color 0.2s;
-}
-
-.muscleTable button:hover {
-  background-color: #e8de26;
-}
-
-.muscleTable button.selected {
-  background-color: #41b317;
-  color: black;
-}
-.muscleTable button.clearAllBtn {
-  /* background-color: #ff0000; */
-  color:#ff0000;
-  /* border-color: #ff0000; */
-}
-.muscleTable button.clearAllBtn:hover {
-  background-color: #e8de26;
-}
-
-.bodyMapContainer img {
-  max-width: 115%;
-}
-
-.flip-stack {
-  margin:10%;
-  gap: 3%;
-}
-
-.flip-box {
-  width: 1000px;
-  height: 1300px;
-  margin-top: 250px;
-  margin-left: 10px;
-  margin-right: 10px;
-  /* perspective: 1000px; */
-  /* this makes 3D effect, but it makes bugs.. */
-  /* border: 0px solid #FFF;  */
-  /* this is the container for the flied cards */
-  border-radius: 70px;
-}
-
-.flip {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  transform-style: preserve-3d;
-  transition: transform 1.2s;
-  border-radius: 70px;
-}
-
-.flip:hover {
-  transform: rotateY(180deg);
-}
-
-.flip>* {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
-  border-radius: 70px;
-}
-
-.flip>.back {
-  transform: rotateY(180deg);
-  background: rgb(160, 144, 74);
-  border-radius: 70px;
-}
-
-
-.exercise-container {
-  position: relative;
-  display: inline-flex;
-  /* margin-right: 150px;  */
-  margin-bottom: 100px;
-}
-
-.instructions {
-  position: absolute;
-  top: -50px; 
-  right: 110%;
-  width: 1000px;
-  font-size: 45px;
-  background: rgb(0, 0, 0);
-  color: white;
-}
-

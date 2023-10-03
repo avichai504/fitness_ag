@@ -1,17 +1,12 @@
-import React from "react";
-import { useState, useEffect } from "react";
-import { Box, Typography, Stack, Button, TextField } from "@mui/material";
-import { fetchData, exerciseOptions } from "../utils/fetchData";
+import React, { useEffect, useState } from "react";
+import { Box, Button, Stack, TextField, Typography } from "@mui/material";
+
+import { exerciseOptions, fetchData } from "../utils/fetchData";
 import HorizontalScrollbar from "./HorizontalScrollbar";
 
-const SearchExercises = ({
-  setExercises,
-  bodyPart,
-  setBodyPart,
-  setInputUser,
-}) => {
+const SearchExercises = ({ setExercises, bodyPart, setBodyPart }) => {
   const [search, setSearch] = useState("");
-  const [bodyParts, setBodyParts] = useState([]); 
+  const [bodyParts, setBodyParts] = useState([]);
 
   useEffect(() => {
     const fetchExercisesData = async () => {
@@ -19,86 +14,70 @@ const SearchExercises = ({
         "https://exercisedb.p.rapidapi.com/exercises/bodyPartList",
         exerciseOptions
       );
-      setBodyParts([...bodyPartsData]); 
+
+      setBodyParts([...bodyPartsData]);
     };
-    fetchExercisesData(); // fetch body parts as soon as the app start
-  }, []);
+
+    fetchExercisesData();
+  }, [bodyPart]);
 
   const handleSearch = async () => {
     if (search) {
-      const searchResults = document.getElementById("exercise-cards");
-      searchResults.scrollIntoView({ behavior: "smooth" });
       const exercisesData = await fetchData(
         "https://exercisedb.p.rapidapi.com/exercises",
         exerciseOptions
       );
+
       const searchedExercises = exercisesData.filter(
-        (exercise) =>
-          exercise.name.toLocaleLowerCase().includes(search) ||
-          exercise.target.toLocaleLowerCase().includes(search) ||
-          exercise.equipment.toLocaleLowerCase().includes(search) ||
-          exercise.bodyPart.toLocaleLowerCase().includes(search)
+        (item) =>
+          item.name.toLowerCase().includes(search) ||
+          item.target.toLowerCase().includes(search) ||
+          item.equipment.toLowerCase().includes(search) ||
+          item.bodyPart.toLowerCase().includes(search)
       );
-      setInputUser(search); //* set the inputUser state to the search value
-      setSearch(""); // clear search field
+
+      window.scrollTo({ top: 1800, left: 100, behavior: "smooth" });
+
+      setSearch("");
       setExercises(searchedExercises);
     }
   };
 
   return (
-    <Stack
-      id="search-exercises"
-      alignItems="center"
-      justifyContent="center"
-      mt="37px"
-      p="20px"
-    >
+    <Stack alignItems="center" mt="37px" justifyContent="center" p="20px">
       <Typography
-        fontWeight={70}
+        fontWeight={700}
         sx={{ fontSize: { lg: "44px", xs: "30px" } }}
-        mb="20px"
+        mb="49px"
         textAlign="center"
-        color="red"
       >
-        Search for Exercises, Target Muscle, Equipment or Body Part
+        Awesome Exercises You <br /> Should Know
       </Typography>
       <Box position="relative" mb="72px">
         <TextField
+          height="76px"
           sx={{
-            input: {
-              fontWeight: "900",
-              border: "3px solid #FF2625",
-              borderRadius: "3px",
-              padding: "12px",
-              fontSize: "24px",
-            },
+            input: { fontWeight: "700", border: "none", borderRadius: "4px" },
             width: { lg: "1170px", xs: "350px" },
             backgroundColor: "#fff",
+            borderRadius: "40px",
           }}
-          height="76px"
           value={search}
-          onChange={(event) => {
-            setSearch(event.target.value.toLocaleLowerCase());
-          }}
+          onChange={(e) => setSearch(e.target.value.toLowerCase())}
           placeholder="Search Exercises"
           type="text"
-          onKeyDown={(e) => {
-            if (e.key === "Enter") handleSearch();
-          }}
         />
         <Button
           className="search-btn"
           sx={{
-            borderRadius: "2px",
-            backgroundColor: "#FF2625",
+            bgcolor: "#FF2625",
             color: "#fff",
-            fontWeight: "45px",
-            border: "none",
-            width: { lg: "190px", xs: "14px" },
-            fontSize: { lg: "39px", xs: "14px" },
-            height: { lg: "61px", xs: "14px" },
+            textTransform: "none",
+            width: { lg: "173px", xs: "80px" },
+            height: "56px",
             position: "absolute",
-            right: "0",
+            right: "0px",
+            fontSize: { lg: "20px", xs: "14px" },
           }}
           onClick={handleSearch}
         >

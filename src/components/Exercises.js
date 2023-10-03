@@ -6,27 +6,9 @@ import { exerciseOptions, fetchData } from "../utils/fetchData";
 import ExerciseCard from "./ExerciseCard";
 import Loader from "./Loader";
 
-const Exercises = ({ exercises, setExercises, bodyPart, inputUser }) => {
+const Exercises = ({ exercises, setExercises, bodyPart }) => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [exercisesPerPage] = useState(60);
-
-  const searchResults = (inputUser, bodyPart) => {
-    const boldStyle = { fontWeight: "bold", fontSize:"60px" };
-    return inputUser || bodyPart !== "all" ? (
-      <Typography
-        fontWeight={500}
-        color={"white"}
-        sx={{ fontSize: { lg: "54px", xs: "30px" } }}
-        mb="20px"
-        textAlign="center"
-      >
-        Showing <span style={boldStyle}>{exercises.length}</span> Exercises for{" "}
-        <span style={boldStyle}>{bodyPart || inputUser }</span> 💪🏼
-      </Typography>
-    ) : (
-      ""
-    );
-  };
+  const [exercisesPerPage] = useState(6);
 
   useEffect(() => {
     const fetchExercisesData = async () => {
@@ -53,8 +35,7 @@ const Exercises = ({ exercises, setExercises, bodyPart, inputUser }) => {
   }, [bodyPart, setExercises]);  //? adding more dependency - `setExercise`
 
 
-
-  //! Optional - Pagination
+  // Pagination
   const indexOfLastExercise = currentPage * exercisesPerPage;
   const indexOfFirstExercise = indexOfLastExercise - exercisesPerPage;
   const currentExercises = exercises.slice(
@@ -65,7 +46,7 @@ const Exercises = ({ exercises, setExercises, bodyPart, inputUser }) => {
   const paginate = (event, value) => {
     setCurrentPage(value);
 
-    window.scrollTo({ top: 1780, behavior: "smooth" });
+    window.scrollTo({ top: 1800, behavior: "smooth" });
   };
 
   if (!currentExercises.length) return <Loader />;
@@ -78,7 +59,7 @@ const Exercises = ({ exercises, setExercises, bodyPart, inputUser }) => {
         sx={{ fontSize: { lg: "44px", xs: "30px" } }}
         mb="46px"
       >
-        {searchResults(inputUser, bodyPart)}
+        Showing Results
       </Typography>
       <Stack
         direction="row"
@@ -90,7 +71,19 @@ const Exercises = ({ exercises, setExercises, bodyPart, inputUser }) => {
           <ExerciseCard key={idx} exercise={exercise} />
         ))}
       </Stack>
-      
+      <Stack sx={{ mt: { lg: "114px", xs: "70px" } }} alignItems="center">
+        {exercises.length > 9 && (
+          <Pagination
+            color="standard"
+            shape="rounded"
+            defaultPage={1}
+            count={Math.ceil(exercises.length / exercisesPerPage)}
+            page={currentPage}
+            onChange={paginate}
+            size="large"
+          />
+        )}
+      </Stack>
     </Box>
   );
 };
