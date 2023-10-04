@@ -3,7 +3,8 @@ import { Box, Stack, Typography, Button } from "@mui/material";
 import LOGO from "../assets/icons/Fitness&Education-LOGO.png";
 
 const Footer = () => (
-  <Box mt="60px" bgcolor="white">
+  <Box className="footer"
+  m="60px" bgcolor="white" >
     <Stack direction={"row"} gap="10px" sx={{ alignItems: "center" }}>
       <Button>
         <img
