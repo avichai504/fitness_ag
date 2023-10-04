@@ -5,7 +5,7 @@ import Exercises from "../components/Exercises";
 import SearchExercises from "../components/SearchExercises";
 import HeroBanner from "../components/HeroBanner";
 
-import Welcome from "../components/Welcome";
+import HeroSection from "../components/HeroSection";
 
 const Home = () => {
   const [exercises, setExercises] = useState([]);
@@ -13,22 +13,20 @@ const Home = () => {
 
   return (
     <Box>
-      <Welcome/>
+      <HeroSection />
       <div className="container">
-
-
-      <HeroBanner />
-      <SearchExercises
-        setExercises={setExercises}
-        bodyPart={bodyPart}
-        setBodyPart={setBodyPart}
+        <HeroBanner />
+        <SearchExercises
+          setExercises={setExercises}
+          bodyPart={bodyPart}
+          setBodyPart={setBodyPart}
         />
-      <Exercises
-        setExercises={setExercises}
-        exercises={exercises}
-        bodyPart={bodyPart}
+        <Exercises
+          setExercises={setExercises}
+          exercises={exercises}
+          bodyPart={bodyPart}
         />
-        </div>
+      </div>
     </Box>
   );
 };
