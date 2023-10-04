@@ -13,8 +13,10 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import MonitorHeartIcon from "@mui/icons-material/MonitorHeart";
+import LOGO from "../assets/icons/Fitness&Education-LOGO.png";
 
-const pages = ["anatomy", "exercises", "ai diet couch"]; //! menu bar
+
+const pages = ["Anatomy", "Exercises", "AI Diet Couch"]; //! menu bar
 const settings = ["Profile", "Account", "Dashboard", "Logout"]; //! user setting
 
 function ResponsiveAppBar() {
@@ -37,7 +39,7 @@ function ResponsiveAppBar() {
   };
 
   return (
-    <AppBar position="static" color="primary">
+    <AppBar position="fixed" color="default">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <MonitorHeartIcon
@@ -47,26 +49,24 @@ function ResponsiveAppBar() {
           {/* logo width xl */}
           <Typography
             variant="h4"
-            noWrap
             component="a"
             href="#app-bar-with-responsive-menu"
             sx={{
-              mr: 13,
+              mr: 9,
               display: { xs: "none", md: "flex" },
               fontFamily: "monospace",
               fontWeight: 700,
-              letterSpacing: ".3rem",
+              letterSpacing: ".1rem",
               color: "inherit",
               textDecoration: "none",
             }}
           >
-            AG Fitness
+            Fitness Club
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             {/* hamburger icon menu */}
             <IconButton
-              size="large"
               aria-label="account of current user"
               aria-controls="menu-appbar"
               aria-haspopup="true"
@@ -97,9 +97,7 @@ function ResponsiveAppBar() {
             >
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography  textAlign="center">
-                    {page}
-                  </Typography>
+                  <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -107,7 +105,7 @@ function ResponsiveAppBar() {
 
           {/* Icon logo width xs */}
           <MonitorHeartIcon
-            sx={{ display: { xs: "flex", md: "none" }, mr: 1 }}
+            sx={{ display: { xs: "none", md: "none" }, mr: 1 }}
           />
 
           {/* Logo width xs */}
@@ -117,17 +115,18 @@ function ResponsiveAppBar() {
             component="a"
             href="#app-bar-with-responsive-menu"
             sx={{
-              mr: 2,
+              mr: 0,
               display: { xs: "flex", md: "none" },
               flexGrow: 1,
               fontFamily: "monospace",
               fontWeight: 700,
-              letterSpacing: ".3rem",
+              fontSize: 32,
+              letterSpacing: ".0rem",
               color: "inherit",
               textDecoration: "none",
             }}
           >
-            AG fitness
+            Fitness Club
           </Typography>
 
           {/* item menu width xl */}
@@ -136,7 +135,12 @@ function ResponsiveAppBar() {
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
-                sx={{ ml: 1, color: "white", display: "block", fontSize:"17px" }}
+                sx={{
+                  ml: 1,
+                  color: "black",
+                  display: "block",
+                  fontSize: "17px",
+                }}
               >
                 {page}
               </Button>
@@ -147,11 +151,13 @@ function ResponsiveAppBar() {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <Avatar 
+                  sx={{ width: 104, height: 104 }}
+                alt="user image" src={LOGO} />
               </IconButton>
             </Tooltip>
             <Menu
-              sx={{ mt: "45px" }}
+              sx={{ mt: "65px", ml:"-10px" }}
               id="menu-appbar"
               anchorEl={anchorElUser}
               anchorOrigin={{
