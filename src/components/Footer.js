@@ -1,13 +1,37 @@
-import React from 'react';
-import { Box, Stack, Typography } from '@mui/material';
-import Logo from '../assets/images/Logo-1.png';
+import React from "react";
+import { Box, Stack, Typography, Button } from "@mui/material";
+import LOGO from "../assets/icons/Fitness&Education-LOGO.png";
 
 const Footer = () => (
-  <Box mt="80px" bgcolor="#FFF3F4">
-    <Stack gap="40px" sx={{ alignItems: 'center' }} flexWrap="wrap" px="40px" pt="24px">
-      <img src={Logo} alt="logo" style={{ width: '200px', height: '41px' }} />
+  <Box mt="60px" bgcolor="white">
+    <Stack direction={"row"} gap="10px" sx={{ alignItems: "center" }}>
+      <Button>
+        <img
+          src={LOGO}
+          alt="logo"
+          style={{ width: "150px", height: "150px", borderRadius: "100px" }}
+        />
+      </Button>
+
+      <Typography
+        sx={{ fontSize: { lg: "28px", xs: "17px" } }}
+        m="30px"
+        textAlign="center"
+      >
+        Made by Avichai Gal-Or
+      </Typography>
+      <Button
+        href="mailto:avichai504@gmail.com"
+        variant="outlined"
+        color="error"
+        style={{
+          fontWeight: 600,
+          marginInline: "auto",
+        }}
+      >
+        Email Us!
+      </Button>
     </Stack>
-    <Typography variant="h5" sx={{ fontSize: { lg: '28px', xs: '20px' } }} mt="41px" textAlign="center" pb="40px">Made by Avichai's Production</Typography>
   </Box>
 );
 
