@@ -4,7 +4,7 @@ import { fetchData, bodyMapOptions } from "../utils/fetchData";
 import Loader from "./Loader";
 
 const BodyMap = () => {
-  const MAX_MUSCLES_SELECTOR = 12;
+const MAX_MUSCLES_SELECTOR = 12;
 
   const [image, setImage] = useState("");
   const [selectedMuscles, setSelectedMuscles] = useState([]);
@@ -12,7 +12,7 @@ const BodyMap = () => {
   const [selectorCount, setSelectorCount] = useState(0);
 
   const muscles = {
-    General: [
+  General: [
       "all",
       "all_lower",
       "all_upper",
@@ -170,8 +170,8 @@ const BodyMap = () => {
   }, [selectedMuscles]);
 
   return (
-    <div id="body-map-container" className="bodyMapContainer">
-      <table className="muscleTable">
+    <div id="body-map-container" className="body-map-container">
+      <table className="muscle-table">
         <tr>
           {Object.keys(muscles).map((group) => (
             <th key={group}>{group}</th>
@@ -192,7 +192,7 @@ const BodyMap = () => {
                         selectedMuscles.includes(musclesList[index])
                           ? "selected"
                           : musclesList[index] === "Clear All"
-                          ? "clearAllBtn"
+                          ? "clear-all-btn"
                           : ""
                       }
                       onClick={() => handleMuscleClick(musclesList[index])}
@@ -209,7 +209,7 @@ const BodyMap = () => {
       {loading ? (
         <Loader />
       ) : (
-        <img className="bodyMapImage" src={image} alt="Muscle Image" />
+        <img className="body-map-image" src={image} alt="Muscle Image" />
       )}
     </div>
   );
