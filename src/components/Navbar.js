@@ -13,8 +13,7 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import MonitorHeartIcon from "@mui/icons-material/MonitorHeart";
-import LOGO from "../assets/icons/Fitness&Education-LOGO.png";
-
+import Logo from "./Logo";
 
 const pages = ["Anatomy", "Exercises", "AI Diet Couch"]; //! menu bar
 const settings = ["Profile", "Account", "Dashboard", "Logout"]; //! user setting
@@ -42,37 +41,32 @@ function ResponsiveAppBar() {
     <AppBar position="fixed" color="default">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <MonitorHeartIcon
-            sx={{ display: { xs: "none", md: "flex" }, mr: 1 }}
-          />
+          <Button href="#app-bar-with-responsive-menu">
+            <Logo sx={{ display: { xs: "none", md: "flex" } }} />
+          </Button>
 
           {/* logo width xl */}
           <Typography
+            padding={"2px"}
             variant="h4"
             component="a"
             href="#app-bar-with-responsive-menu"
             sx={{
-              mr: 9,
+              mr: 5,
               display: { xs: "none", md: "flex" },
-              fontFamily: "monospace",
+              // fontFamily: "monospace",
               fontWeight: 700,
-              letterSpacing: ".1rem",
+              // letterSpacing: ".1rem",
               color: "inherit",
               textDecoration: "none",
             }}
           >
-            Fitness Club
+            Fitness & Education
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             {/* hamburger icon menu */}
-            <IconButton
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
-            >
+            <IconButton onClick={handleOpenNavMenu} color="inherit">
               <MenuIcon />
             </IconButton>
 
@@ -151,13 +145,11 @@ function ResponsiveAppBar() {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar 
-                  sx={{ width: 104, height: 104 }}
-                alt="user image" src={LOGO} />
+                <Avatar alt="User image" src={""} />
               </IconButton>
             </Tooltip>
             <Menu
-              sx={{ mt: "65px", ml:"-10px" }}
+              sx={{ mt: "65px", ml: "-10px" }}
               id="menu-appbar"
               anchorEl={anchorElUser}
               anchorOrigin={{
