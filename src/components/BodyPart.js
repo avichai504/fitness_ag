@@ -1,6 +1,6 @@
 import React from "react";
 import { Stack, Typography } from "@mui/material";
-import Icon from "../assets/icons/gym.png";
+import Icon from "../assets/icons/muscle-icon.png";
 
 const BodyPart = ({ item, setBodyPart, bodyPart }) => (
   <Stack
@@ -11,36 +11,30 @@ const BodyPart = ({ item, setBodyPart, bodyPart }) => (
     sx={
       bodyPart === item
         ? {
-            borderTop: "4px solid #FF2625",
             background: "#fff",
-            borderBottomLeftRadius: "20px",
-            width: "270px",
-            height: "282px",
+            borderBottomLeftRadius: "200px",
+            borderBottomRightRadius: "200px",
+            border: "solid 2px #a09000",
+            width: "170px",
+            height: "232px",
             cursor: "pointer",
-            gap: "47px",
+            gap: "52px",
           }
         : {
             background: "#fff",
             borderBottomLeftRadius: "20px",
-            width: "270px",
-            height: "282px",
+            width: "170px",
+            height: "232px",
             cursor: "pointer",
-            gap: "47px",
+            gap: "52px",
           }
     }
     onClick={() => {
       setBodyPart(item);
-      window.scrollTo({ top: 1800, left: 100, behavior: "smooth" });
     }}
   >
-    <img src={Icon} alt="dumbbell" style={{ width: "40px", height: "40px" }} />
-    <Typography
-      fontSize="24px"
-      fontWeight="bold"
-      fontFamily="Alegreya"
-      color="#3A1212"
-      textTransform="capitalize"
-    >
+    <img src={Icon} alt="dumbbell" style={{ width: "99px", height: "99px" }} />
+    <Typography fontSize="28px" fontWeight="bold" textTransform="capitalize">
       {" "}
       {item}
     </Typography>
