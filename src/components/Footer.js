@@ -19,7 +19,7 @@ const Footer = () => (
         m="30px"
         textAlign="center"
       >
-        Made by Avichai Gal-Or
+        Made With 🧡 By AGO productions
       </Typography>
       <Button
         href="mailto:avichai504@gmail.com"
