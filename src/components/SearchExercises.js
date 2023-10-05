@@ -44,7 +44,7 @@ const SearchExercises = ({ setExercises, bodyPart, setBodyPart }) => {
   };
 
   return (
-    <Stack alignItems="center" mt="37px" justifyContent="center" p="90px">
+    <Stack id="search-field" alignItems="center" mt="37px" justifyContent="center" p="90px">
    
       <Box position="relative" mb="72px">
         <TextField
