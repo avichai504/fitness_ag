@@ -6,7 +6,7 @@ const Logo = () => {
     <img
       src={FitnessAndEducationLogo}
       alt="fitness and education logo"
-      style={{ width: "100px", borderRadius: "50px" }}
+      style={{ width: "80px", borderRadius: "50px" }}
     />
   );
 };
