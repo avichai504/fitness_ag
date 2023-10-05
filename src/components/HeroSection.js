@@ -34,7 +34,6 @@ export default function HeroSection() {
           backgroundImage: `url(${banner})`,
           backgroundSize: "cover",
           position: "absolute",
-          borderRadius: "0px 0px 120px 120px",
         }}
       ></div>
       <div
@@ -51,9 +50,7 @@ export default function HeroSection() {
           zIndex: 100,
           maxWidth: "60%",
           marginRight: "-40px",
-          marginTop: "-290px",
         }}
-        maxWidth="md"
       >
         <Zoom in={shouldShow}>
           <Grid
@@ -75,7 +72,7 @@ export default function HeroSection() {
             </Grid>
             <Hidden xsDown>
               <Grid item>
-                <Typography variant="h5">Check Our Social Media!</Typography>
+                <Typography variant="h5" style={{color:"black"}}>Check Our Social Media!</Typography>
                 <Social direction="row" />
               </Grid>
             </Hidden>
