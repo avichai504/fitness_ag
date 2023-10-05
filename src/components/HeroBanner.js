@@ -1,58 +1,64 @@
 import React from "react";
-import { Box, Stack, Typography } from "@mui/material";
+import { Box, Stack, Typography, Button } from "@mui/material";
+import HeroBannerImage from "../assets/images/gymWoman.jpg";
+import "../App.css";
 
-import HeroBannerImage from "../assets/images/gymWoman2.jpg";
+const myColor = "#a09000";
+
+// Reusable Inline React Component for the anchor tags turned into buttons
+const StyledLinkButton = ({ href, children }) => {
+  return (
+    <Button
+      href={href}
+      style={{
+        marginInline: "auto",
+        marginTop: "22px",
+        width: "200px",
+        textAlign: "center",
+        padding: "4px",
+        fontSize: "22px",
+        textTransform: "none",
+        color: "black",
+        border: "solid 3px black",
+        borderRadius: "4px",
+        backgroundColor: myColor,
+      }}
+    >
+      {children}
+    </Button>
+  );
+};
 
 const HeroBanner = () => (
-  <Box 
-    sx={{ mt: { lg: "212px", xs: "70px" }, ml: { sm: "50px" } }}
-    position="relative"
-    p="20px"
-  >
-    <Typography color="#FF2625" fontWeight="600" fontSize="26px">
-      Fitness Club
+  <Box className="hero-banner-box" position="relative" p="20px">
+    <Typography color={myColor} fontWeight="600" fontSize="26px">
+      Fitness & Education
     </Typography>
     <Typography
+      className="hero-banner-typo"
       fontWeight={700}
-      sx={{ fontSize: { lg: "44px", xs: "40px" } }}
+      fontSize="28px"
       mb="23px"
       mt="30px"
     >
-      Sweat, Smile <br />
-      And Repeat
+      Learn About Human Anatomy, <br /> And Practice Throw Unique Exercises!
     </Typography>
-    <Typography fontSize="22px" fontFamily="Alegreya" lineHeight="35px">
-      Check out the most effective exercises personalized to you
+    <Typography fontSize="25px" fontFamily="Alegreya" lineHeight="35px">
+      Daily exercise cultivates vitality, ensuring a vibrant tomorrow with every
+      active step today.
     </Typography>
-    <Stack>
-      <a
-        href="#exercises"
-        style={{
-          marginTop: "45px",
-          textDecoration: "none",
-          width: "200px",
-          textAlign: "center",
-          background: "#FF2625",
-          padding: "14px",
-          fontSize: "22px",
-          textTransform: "none",
-          color: "white",
-          borderRadius: "4px",
-        }}
-      >
-        Explore Exercises
-      </a>
+    <Stack direction={"row"} gap={6}>
+      <StyledLinkButton href="#body-map-container">Anatomy</StyledLinkButton>
+      <StyledLinkButton href="#search-field">Exercises</StyledLinkButton>
+      <StyledLinkButton href="#diet-ai">Diet AI</StyledLinkButton>
     </Stack>
     <Typography
+      className="hero-banner-typo-footer"
       fontWeight={600}
-      color="#FF2625"
-      sx={{
-        opacity: "0.1",
-        display: { lg: "block", xs: "none" },
-        fontSize: "200px",
-      }}
+      color={myColor}
+      fontSize="120px"
     >
-      Exercise
+      Fitness & Education
     </Typography>
     <img src={HeroBannerImage} alt="hero-banner" className="hero-banner-img" />
   </Box>
