@@ -8,7 +8,7 @@ import Social from "./Social";
 import Hidden from "@material-ui/core/Hidden";
 import Zoom from "@material-ui/core/Zoom";
 
-import banner from "../assets/images/banner11.jpg";
+import banner from "../assets/images/gymMan2.jpg";
 
 export default function HeroSection() {
   const [shouldShow, setShouldShow] = useState(false);
@@ -33,6 +33,7 @@ export default function HeroSection() {
           zIndex: 1,
           backgroundImage: `url(${banner})`,
           backgroundSize: "cover",
+          backgroundPosition:"center",
           position: "absolute",
         }}
       ></div>
