@@ -15,12 +15,11 @@ const Exercises = ({ exercises, setExercises, bodyPart }) => {
       let exercisesData = [];
 
       if (bodyPart === "all") {
-        //! Optional - render all the body parts as the app start 
+        //! Optional - render all the body parts as the app start
         // exercisesData = await fetchData(
         //   "https://exercisedb.p.rapidapi.com/exercises",
         //   exerciseOptions
         // );
-
       } else {
         exercisesData = await fetchData(
           `https://exercisedb.p.rapidapi.com/exercises/bodyPart/${bodyPart}`,
@@ -32,8 +31,7 @@ const Exercises = ({ exercises, setExercises, bodyPart }) => {
     };
 
     fetchExercisesData();
-  }, [bodyPart, setExercises]);  //? adding more dependency - `setExercise`
-
+  }, [bodyPart, setExercises]); //? adding more dependency - `setExercise`
 
   // Pagination
   const indexOfLastExercise = currentPage * exercisesPerPage;
@@ -54,18 +52,18 @@ const Exercises = ({ exercises, setExercises, bodyPart }) => {
   return (
     <Box id="exercises" sx={{ mt: { lg: "109px" } }} mt="50px" p="20px">
       <Typography
-        variant="h4"
         fontWeight="bold"
-        sx={{ fontSize: { lg: "44px", xs: "30px" } }}
+        sx={{ fontSize: { lg: "32px", xs: "26px" } }}
         mb="46px"
       >
-        Showing Results
+        Results
       </Typography>
       <Stack
         direction="row"
         sx={{ gap: { lg: "107px", xs: "50px" } }}
         flexWrap="wrap"
         justifyContent="center"
+        fontSize="12px"
       >
         {currentExercises.map((exercise, idx) => (
           <ExerciseCard key={idx} exercise={exercise} />
