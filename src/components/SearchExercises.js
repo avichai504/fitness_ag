@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Box, Button, Stack, TextField, Typography } from "@mui/material";
+import { Box, Button, Stack, TextField} from "@mui/material";
 
 import { exerciseOptions, fetchData } from "../utils/fetchData";
 import HorizontalScrollbar from "./HorizontalScrollbar";
@@ -44,14 +44,26 @@ const SearchExercises = ({ setExercises, bodyPart, setBodyPart }) => {
   };
 
   return (
-    <Stack id="search-field" alignItems="center" mt="37px" justifyContent="center" p="90px">
-   
+    <Stack
+      id="search-field"
+      alignItems="center"
+      mt="37px"
+      justifyContent="center"
+      p="90px"
+    >
       <Box position="relative" mb="72px">
         <TextField
-          sx={{
-            input: { fontWeight: "700", border: "none", borderRadius: "4px" },
-            width: { lg: "1000px",sm:"550px" ,xs: "350px" },
-            backgroundColor: "#fff",
+           sx={{
+            input: { 
+              fontWeight: "900", 
+             
+            },
+            "& .Mui-focused .MuiOutlinedInput-notchedOutline": {
+              border: "2mm ridge rgba(211, 220, 50, .6)",
+            },
+            width: { lg: "1000px", sm: "550px", xs: "350px" },
+            backgroundColor: "#fff", 
+            textTransform: "none",
           }}
           value={search}
           onChange={(e) => setSearch(e.target.value.toLowerCase())}
@@ -75,7 +87,14 @@ const SearchExercises = ({ setExercises, bodyPart, setBodyPart }) => {
           Search
         </Button>
       </Box>
-      <Box sx={{ position: "relative", width: "100%", p: "20px" }}>
+      <Box
+        sx={{
+          position: "relative",
+          width: "100%",
+          p: "20px",
+          textTransform: "none",
+        }}
+      >
         <HorizontalScrollbar
           data={bodyParts}
           bodyParts
