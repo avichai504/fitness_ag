@@ -44,16 +44,8 @@ const SearchExercises = ({ setExercises, bodyPart, setBodyPart }) => {
   };
 
   return (
-    <Stack alignItems="center" mt="37px" justifyContent="center" p="20px">
-      <Typography
-      
-        fontWeight={700}
-        sx={{ fontSize: { lg: "44px", xs: "30px" } }}
-        mb="49px"
-        textAlign="center"
-      >
-        Awesome Exercises You <br /> Should Know
-      </Typography>
+    <Stack alignItems="center" mt="37px" justifyContent="center" p="90px">
+   
       <Box position="relative" mb="72px">
         <TextField
           sx={{
@@ -69,7 +61,7 @@ const SearchExercises = ({ setExercises, bodyPart, setBodyPart }) => {
         <Button
           className="search-btn"
           sx={{
-            bgcolor: "#de2323",
+            bgcolor: "#bc6c25",
             color: "#fff",
             textTransform: "none",
             width: { lg: "173px", xs: "80px" },
