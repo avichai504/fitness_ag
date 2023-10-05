@@ -1,17 +1,14 @@
 import React from "react";
 import { Box, Stack, Typography, Button } from "@mui/material";
 import LOGO from "../assets/icons/Fitness&Education-LOGO.png";
+import Logo from "./Logo";
 
 const Footer = () => (
   <Box className="footer"
   m="60px" bgcolor="white" >
     <Stack direction={"row"} gap="10px" sx={{ alignItems: "center" }}>
       <Button>
-        <img
-          src={LOGO}
-          alt="logo"
-          style={{ width: "150px", height: "150px", borderRadius: "100px" }}
-        />
+       <Logo/>
       </Button>
 
       <Typography
