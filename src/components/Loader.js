@@ -2,6 +2,9 @@ import React from "react";
 import { Stack } from "@mui/material";
 import { Triangle } from "react-loader-spinner";
 
+const primaryColor =  "#a09000";
+
+
 const Loader = () => (
   <Stack
     direction="row"
@@ -9,7 +12,7 @@ const Loader = () => (
     alignItems="center"
     width="100%"
   >
-    <Triangle color="red" height={190} width={90} />
+    <Triangle color={primaryColor} height={190} width={90} />
   </Stack>
 );
 
