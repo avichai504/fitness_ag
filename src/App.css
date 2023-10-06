@@ -132,11 +132,11 @@ body {
 }
 
 .search-filed-container {
-  border: solid 2px rgb(255, 0, 0);
+  /* border: solid 2px rgb(255, 0, 0); */
 }
 
 .horizontal-menu-container {
-  border: solid 2px black;
+  /* border: solid 2px black; */
   display: grid;
   grid-auto-columns: 100%;
 }
@@ -252,7 +252,7 @@ body {
 /* Base styles (applies to all sizes) */
 
 .body-map-container {
-  border: solid 2px rgb(7, 27, 248);
+  /* border: solid 2px rgb(7, 27, 248); */
   padding-top: 220px;
   display: grid;
   grid-auto-flow: column;
@@ -262,15 +262,15 @@ body {
 .muscle-table {
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   border-collapse: collapse;
-  border: solid 2px rgb(13, 255, 0);
+  /* border: solid 2px rgb(13, 255, 0); */
 }
 
 .body-map-image {
-  border: solid 2px red;
+  /* border: solid 2px red; */
 }
 
 .muscle-table th {
-  background-color: #000000d1;
+  /* background-color: #000000d1; */
   color: white;
 }
 
