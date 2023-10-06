@@ -248,18 +248,30 @@ body {
 }
 
 /* body map section */
+
 /* Base styles (applies to all sizes) */
 
 .body-map-container {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
+  border: solid 2px rgb(7, 27, 248);
   padding-top: 220px;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: auto;
 }
 
 .muscle-table {
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   border-collapse: collapse;
+  border: solid 2px rgb(13, 255, 0);
+}
+
+.body-map-image {
+  border: solid 2px red;
+}
+
+.muscle-table th {
+  background-color: #000000d1;
+  color: white;
 }
 
 .muscle-table td,
@@ -268,10 +280,6 @@ body {
   padding: 3px;
 }
 
-.muscle-table th {
-  background-color: #000000d1;
-  color: white;
-}
 
 .muscle-table button {
   font-weight: 600;
@@ -302,30 +310,34 @@ body {
 
 /* mobile */
 @media (max-width: 500px) {
-
   .body-map-container {
+    grid-auto-flow: row;
     padding-top: 24vh;
+    width: fit-content;
   }
+  
+  .muscle-table {
+    width: 280px;
+    margin-inline: auto;
 
-  .body-map-container img {
-    max-width: 100vh;
-    max-height: 100vh;
   }
-
+  .body-map-image{
+    --max-width: 300px;
+    --padding: 1rem;
+    width: min(var(--max-width), 100% - var(--padding) * 2);
+    margin-inline: auto;
+    
+  }
+  
   .muscle-table button {
-    font-size: 60%;
-    width: 19vh;
+    font-size: 46%;
     height: 5.4vh;
+    --max-width: 80px;
+    --padding: 0.4rem;
+    width: min(var(--max-width), 100% - var(--padding) * 2);
   }
 
-  .muscle-select {
-    width: 25%;
-    padding: 12px 21px;
-    margin-bottom: 50px;
-    border: 3px solid #000000;
-    border-radius: 18px;
-    font-size: 32px;
-  }
+ 
 }
 
 /* tablet */
@@ -337,8 +349,10 @@ body {
   }
 
   .body-map-container img {
-    width: auto;
-    max-width: 93vh;
+    --max-width: 550px;
+    --padding: 1rem;
+    width: min(var(--max-width), 100% - var(--padding) *2);
+    margin-inline: auto;
     max-height: 99vh;
   }
 
@@ -355,16 +369,17 @@ body {
 }
 
 /* desktop */
-@media (min-width: 801px) {
+@media (800px <= width) {
 
   .body-map-container {
     flex-direction: row;
   }
 
-  .body-map-container img {
-    --max-width: 680px;
-    --padding: 1rem;
+  .body-map-image {
+    --max-width: 500px;
+    --padding: 3rem;
     max-width: min(var(--max-width), 100% - var(--padding) *2);
+    height: 57vh;
     margin-inline: auto;
   }
 
@@ -407,7 +422,7 @@ body {
   margin-left: 0;
 }
 
-@media (width >=600px) {
+@media (width >= 600px) {
   .hero-banner-box {
     margin-left: 50px;
   }
