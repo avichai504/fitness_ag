@@ -12,7 +12,7 @@ const Home = () => {
   const [bodyPart, setBodyPart] = useState("all");
 
   return (
-    <Box>
+    <Box id="home">
       <HeroSection />
       <div className="container">
         <HeroBanner />
