@@ -7,35 +7,19 @@ const BodyPart = ({ item, setBodyPart, bodyPart }) => (
     type="button"
     alignItems="center"
     justifyContent="center"
-    className="bodyPart-card"
-    sx={
-      bodyPart === item
-        ? {
-            background: "#fff",
-            borderBottomLeftRadius: "200px",
-            borderBottomRightRadius: "200px",
-            border: "solid 2px #a09000",
-            width: "170px",
-            height: "232px",
-            cursor: "pointer",
-            gap: "52px",
-          }
-        : {
-            background: "#fff",
-            borderBottomLeftRadius: "20px",
-            width: "170px",
-            height: "232px",
-            cursor: "pointer",
-            gap: "52px",
-          }
-    }
+    className={`bodyPart-card ${bodyPart === item ? "active" : ""}`}
     onClick={() => {
       setBodyPart(item);
     }}
   >
-    <img src={Icon} alt="dumbbell" style={{ width: "99px", height: "99px" }} />
-    <Typography fontSize="28px" fontWeight="bold" textTransform="capitalize">
-      {" "}
+    <img src={Icon} alt="dumbbell" className="bodyPart-image" />
+    <Typography
+      className="bodyPart-text"
+      sx={{
+        fontSize: { lg: "20px", md: "16px", xs: "13px" },
+        fontWeight: "bold",
+      }}
+    >
       {item}
     </Typography>
   </Stack>

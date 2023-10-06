@@ -48,20 +48,17 @@ const SearchExercises = ({ setExercises, bodyPart, setBodyPart }) => {
       id="search-field"
       alignItems="center"
       mt="37px"
-      justifyContent="center"
-      p="90px"
+      className="search-filed-container"
+
     >
-      <Box position="relative" mb="72px">
+      <Box position="relative" mb="72px"
+      >
         <TextField
            sx={{
             input: { 
               fontWeight: "900", 
-             
             },
-            "& .Mui-focused .MuiOutlinedInput-notchedOutline": {
-              border: "2mm ridge rgba(211, 220, 50, .6)",
-            },
-            width: { lg: "1000px", sm: "550px", xs: "350px" },
+            width: { lg: "1000px", sm: "450px", xs: "250px" },
             backgroundColor: "#fff", 
             textTransform: "none",
           }}
@@ -88,11 +85,11 @@ const SearchExercises = ({ setExercises, bodyPart, setBodyPart }) => {
         </Button>
       </Box>
       <Box
+        className="horizontal-menu-container"
         sx={{
           position: "relative",
           width: "100%",
-          p: "20px",
-          textTransform: "none",
+          p: "2px",
         }}
       >
         <HorizontalScrollbar
