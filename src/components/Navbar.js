@@ -42,7 +42,7 @@ function ResponsiveAppBar() {
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Button href="#app-bar-with-responsive-menu">
-            <Logo sx={{ display: { xs: "none", md: "flex" } }} />
+            <Logo />
           </Button>
 
           {/* logo width xl */}
@@ -97,30 +97,26 @@ function ResponsiveAppBar() {
             </Menu>
           </Box>
 
-          {/* Icon logo width xs */}
-          <MonitorHeartIcon
-            sx={{ display: { xs: "none", md: "none" }, mr: 1 }}
-          />
 
           {/* Logo width xs */}
           <Typography
             variant="h4"
             noWrap
             component="a"
-            href="#app-bar-with-responsive-menu"
+            href="#home"
             sx={{
               mr: 0,
               display: { xs: "flex", md: "none" },
               flexGrow: 1,
               fontFamily: "monospace",
               fontWeight: 700,
-              fontSize: 32,
+              fontSize: 19,
               letterSpacing: ".0rem",
               color: "inherit",
               textDecoration: "none",
             }}
           >
-            Fitness Club
+            Fit & Education
           </Typography>
 
           {/* item menu width xl */}
@@ -142,14 +138,14 @@ function ResponsiveAppBar() {
           </Box>
 
           {/* user setting width xs */}
-          <Box sx={{ flexGrow: 0 }}>
+          <Box sx={{ flexGrow: 4 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt="User image" src={""} />
               </IconButton>
             </Tooltip>
             <Menu
-              sx={{ mt: "65px", ml: "-10px" }}
+              sx={{ mt: "65px", ml: "10px" }}
               id="menu-appbar"
               anchorEl={anchorElUser}
               anchorOrigin={{
