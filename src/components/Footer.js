@@ -1,6 +1,5 @@
 import React from "react";
 import { Box, Stack, Typography, Button } from "@mui/material";
-import LOGO from "../assets/icons/Fitness&Education-LOGO.png";
 import Logo from "./Logo";
 
 const Footer = () => (
