@@ -1,27 +1,29 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
 import { Box, Stack, Typography, Button } from "@mui/material";
-import HeroBannerImage from "../assets/images/gymWoman.jpg";
+import Logo from "./Logo";
 import "../App.css";
-
-const myColor = "#a09000";
 
 // Reusable Inline React Component for the anchor tags turned into buttons
 const StyledLinkButton = ({ href, children }) => {
   return (
     <Button
+      className="hero-buttons"
       href={href}
       style={{
         marginInline: "auto",
         marginTop: "22px",
         width: "200px",
         textAlign: "center",
-        padding: "4px",
+        padding: "3px",
         fontSize: "22px",
         textTransform: "none",
-        color: "black",
-        border: "solid 3px black",
-        borderRadius: "4px",
-        backgroundColor: myColor,
+        color: "var(--black-color)",
+        fontWeight: "bold",
+        border: "solid 7px var(--white-color)",
+        borderRadius: "14px",
+        opacity: "85%",
+        backgroundColor: "var(--primary-color)",
       }}
     >
       {children}
@@ -31,36 +33,40 @@ const StyledLinkButton = ({ href, children }) => {
 
 const HeroBanner = () => (
   <Box className="hero-banner-box" position="relative" p="20px">
-    <Typography color={myColor} fontWeight="600" fontSize="26px">
+    <Typography color={"var(--primary-color)"} fontWeight="600" fontSize="26px">
       Fitness & Education
     </Typography>
     <Typography
       className="hero-banner-typo"
-      fontWeight={700}
-      fontSize="28px"
-      mb="23px"
-      mt="30px"
+      mb="43px"
+      mt="-10px"
     >
-      Learn About Human Anatomy, <br /> And Practice Throw Unique Exercises!
     </Typography>
-    <Typography fontSize="25px" fontFamily="Alegreya" lineHeight="35px">
+    <Typography fontSize="25px" lineHeight="35px">
       Daily exercise cultivates vitality, ensuring a vibrant tomorrow with every
       active step today.
     </Typography>
-    <Stack direction={"row"} gap={6}>
+    <Stack direction={"row"} gap={0} className="stack-button">
       <StyledLinkButton href="#body-map-container">Anatomy</StyledLinkButton>
       <StyledLinkButton href="#search-field">Exercises</StyledLinkButton>
       <StyledLinkButton href="#diet-ai">Diet AI</StyledLinkButton>
     </Stack>
+    <div className="logo-container">
+      <a href="#">
+    <Logo width="230px" height="230px"/>
+      </a>
+    </div>
     <Typography
       className="hero-banner-typo-footer"
-      fontWeight={600}
-      color={myColor}
-      fontSize="120px"
+      fontWeight={90}
+      color={"var(--primary-color)"}
+      sx={{
+        fontSize:{xs:"50px", lg:"100px"}
+      }}
     >
       Fitness & Education
     </Typography>
-    <img src={HeroBannerImage} alt="hero-banner" className="hero-banner-img" />
+    {/* <img src={HeroBannerImage} alt="hero-banner" className="hero-banner-img" /> */}
   </Box>
 );
 

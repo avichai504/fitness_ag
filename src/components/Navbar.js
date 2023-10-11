@@ -12,7 +12,6 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-import MonitorHeartIcon from "@mui/icons-material/MonitorHeart";
 import Logo from "./Logo";
 
 const pages = ["Anatomy", "Exercises", "AI Diet Couch"]; //! menu bar
@@ -38,25 +37,23 @@ function ResponsiveAppBar() {
   };
 
   return (
-    <AppBar position="fixed" color="default">
+    <AppBar position="fixed" color="default" >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <Button href="#app-bar-with-responsive-menu">
-            <Logo />
+          <Button href="#home">
+            <Logo width="52px" height="52px" />
           </Button>
 
           {/* logo width xl */}
           <Typography
             padding={"2px"}
-            variant="h4"
+            variant="h5"
             component="a"
-            href="#app-bar-with-responsive-menu"
+            href="#home"
             sx={{
               mr: 5,
               display: { xs: "none", md: "flex" },
-              // fontFamily: "monospace",
               fontWeight: 700,
-              // letterSpacing: ".1rem",
               color: "inherit",
               textDecoration: "none",
             }}
@@ -91,7 +88,7 @@ function ResponsiveAppBar() {
             >
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                  <Typography textAlign="center" textTransform="none" >{page}</Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -100,23 +97,21 @@ function ResponsiveAppBar() {
 
           {/* Logo width xs */}
           <Typography
-            variant="h4"
-            noWrap
+            variant="h6"
             component="a"
             href="#home"
             sx={{
-              mr: 0,
               display: { xs: "flex", md: "none" },
               flexGrow: 1,
               fontFamily: "monospace",
-              fontWeight: 700,
-              fontSize: 19,
+              fontWeight: 900,
+              fontSize: "110%",
               letterSpacing: ".0rem",
               color: "inherit",
               textDecoration: "none",
             }}
           >
-            Fit & Education
+            Fitness & Education
           </Typography>
 
           {/* item menu width xl */}
@@ -126,10 +121,12 @@ function ResponsiveAppBar() {
                 key={page}
                 onClick={handleCloseNavMenu}
                 sx={{
-                  ml: 1,
-                  color: "black",
+                  ml: 15,
+                  color: "var(--black-color)",
                   display: "block",
-                  fontSize: "17px",
+                  fontSize: "20px",
+                  fontWeight: "bold",
+                  textTransform: "none",
                 }}
               >
                 {page}
@@ -138,14 +135,14 @@ function ResponsiveAppBar() {
           </Box>
 
           {/* user setting width xs */}
-          <Box sx={{ flexGrow: 4 }}>
+          <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt="User image" src={""} />
               </IconButton>
             </Tooltip>
             <Menu
-              sx={{ mt: "65px", ml: "10px" }}
+              sx={{ mt: "0px", ml: "0px" }}
               id="menu-appbar"
               anchorEl={anchorElUser}
               anchorOrigin={{

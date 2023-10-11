@@ -2,16 +2,73 @@
   padding: 0px;
   margin: 0px;
   box-sizing: border-box;
-  --primary-color: #a09000;
-  --secondary-color: #a09000;
 
+  z-index: 0;
+
+  /* ================== Five Options For Colors: ================== */
+
+  /* Option 1: Soft Fern */
+
+  /* --primary-color: #4CAF50;
+  --secondary-color: #AEDFB7;
+  --tertiary-color: #D8EAD2;
+  --background-color-main: #00000028; */
+
+  /* Option 2: Whispering Leaves */
+
+  --primary-color: #fc4c4c;
+  --secondary-color: #FF6B6B;
+  --tertiary-color: #FFD6D6;
+  --background-color-main: #ecdcdc;
+
+  /* Option 3: Nature's Melody */
+
+  /* 
+  --primary-color: #578A3D;
+  --secondary-color: #ACCBA1;
+  --tertiary-color: #D1E0C5;
+  --background-color-main: #F5F5DC; */
+
+  /* Option 4: Gentle Meadow */
+
+  /* 
+  --primary-color: #3E8E41;
+  --secondary-color: #A3D2A1;
+  --tertiary-color: #D5EAD4;
+  */
+
+  /* Option 5: Zen Greens */
+
+  /* 
+  --primary-color: #2E7031;
+  --secondary-color: #9EBAA0;
+  --tertiary-color: #C8D9C3;
+  --background-color-main: #E0F2F1; */
+
+
+  /* ================== Five Options for Background Colors: ================== */
+
+
+  /* --background-color-main: #ECEFF1; */
+
+  --black-color: black;
+  --error-color: red;
+  --white-color: white;
+
+  /* font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 
 body {
-  /* background-image: url("https://images.unsplash.com/photo-1616410731303-6affae095a0a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjQyfHxiYWNrZ3JvdW5kfGVufDB8fDB8fHww&auto=format&fit=crop&w=600&q=60"); */
-  background-color: #fefae0;
+  background-color: var(--background-color-main);
+  max-width: min-content;
+  margin-inline: auto;
 }
+
+/* --------------------------------------- */
+
+/* -----Horizontal Scrollbar */
 
 ::-webkit-scrollbar {
   width: 0px;
@@ -51,11 +108,14 @@ body {
   height: 600px;
 }
 
+
+
+
 .exercise-card {
   width: 260px;
   height: 260px;
   background: #fff;
-  border-top: 4px solid var(--primary-color);
+  border-top: 2px solid var(--primary-color);
   border-bottom-left-radius: 20px;
   text-decoration: none;
   display: flex;
@@ -75,7 +135,7 @@ body {
   transform: scale(0.9, 0.9);
   transition: 0.3s all ease-in-out;
   border-top: 2px solid var(--primary-color);
-  background: #fff;
+  background: var(--white-color);
   width: 170px;
   height: 222px;
   cursor: pointer;
@@ -83,9 +143,10 @@ body {
 }
 
 .bodyPart-card.active {
-  border: solid 2px #a09000;
+  border: solid 2px var(--primary-color);
   border-bottom-left-radius: 40px;
   border-bottom-right-radius: 40px;
+  transform: scale(0.85, 0.85);
 }
 
 .bodyPart-card:not(.active) {
@@ -131,12 +192,8 @@ body {
   text-transform: capitalize;
 }
 
-.search-filed-container {
-  /* border: solid 2px rgb(255, 0, 0); */
-}
 
 .horizontal-menu-container {
-  /* border: solid 2px black; */
   display: grid;
   grid-auto-columns: 100%;
 }
@@ -148,7 +205,9 @@ body {
 
 .search-btn:hover {
   color: var(--primary-color);
-  border: 3px solid var(--primary-color) !important;
+  border: 2px solid var(--primary-color);
+  transform: scale(1.03, 1.03);
+
 }
 
 .exercise-video {
@@ -181,8 +240,6 @@ body {
     position: static !important;
   }
 
-
-
   .exercise-card {
     width: 320px;
   }
@@ -194,16 +251,10 @@ body {
 
 }
 
+/* --------------------------------------- */
 
-.banner {
-  background-image: url("/src/assets/images/banner11.jpg");
-  height: 80vh;
-  background-size: cover;
-  margin-top: -72px;
-  margin-bottom: -100px;
-  border-radius: 0px;
-}
 
+/* Main Page - Container */
 
 .container {
   --max-width: 1050px;
@@ -212,201 +263,237 @@ body {
   width: min(var(--max-width), 100% - var(--padding) *2);
   margin-inline: auto;
 
-  background-image: url("https://images.unsplash.com/photo-1566041510394-cf7c8fe21800?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTIzfHxiYWNrZ3JvdW5kfGVufDB8fDB8fHww&auto=format&fit=crop&w=600&q=60");
+  background-image: url("/src/assets/images/backgroundWhite.avif");
   border-radius: 10px;
 }
 
 .footer {
-  background-image: url("https://images.unsplash.com/photo-1566041510394-cf7c8fe21800?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTIzfHxiYWNrZ3JvdW5kfGVufDB8fDB8fHww&auto=format&fit=crop&w=600&q=60");
+  background-image: url("/src/assets/images/backgroundWhite.avif");
   border-radius: 10px;
 }
+
 
 @media screen and (max-width:400px) {
   .exercise-card {
     width: 280px;
   }
-
-  .banner {
-    height: 50vh;
-    margin-top: 70px;
-    margin-bottom: 0px;
-  }
 }
 
 @media screen and (max-width:800px) {
-  .banner {
-    height: 70vh;
-    margin-top: -110px;
-    margin-bottom: 0px;
-    background-position: absolute;
-  }
-
   .footer {
     display: none;
   }
-
 }
 
-/* body map section */
+/* --------------------------------------- */
+
+
+
+/* --------- body map section ---------- */
 
 /* Base styles (applies to all sizes) */
-
 .body-map-container {
-  /* border: solid 2px rgb(7, 27, 248); */
-  padding-top: 220px;
+  padding: 220px 0px 120px 0px;
+  margin: 0px 0px 320px 0px;
+
   display: grid;
   grid-auto-flow: column;
   grid-auto-columns: auto;
-}
 
-.muscle-table {
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  border-collapse: collapse;
-  /* border: solid 2px rgb(13, 255, 0); */
+  height: 73vh;
 }
 
 .body-map-image {
-  /* border: solid 2px red; */
+  height: 68vh;
+  max-height: fit-content;
+
+  --max-width: 80px;
+  --padding: 1rem;
+  width: max(var(--max-width), 100% - var(--padding) *2);
+  margin-inline: auto;
+
+  z-index: 5;
+
+
+}
+
+.muscle-table {
+  background-color: #fff;
+  border: solid 1px black;
+  border-collapse: collapse;
+  max-width: fit-content;
+  min-height: fit-content;
+
+  z-index: 2;
 }
 
 .muscle-table th {
-  /* background-color: #000000d1; */
-  color: white;
+  color: var(--black-color);
+  border: 2px solid var(--black-color);
+  font-size: 1rem;
 }
-
-.muscle-table td,
-.muscle-table th {
-  border: 1px solid #fff;
-  padding: 3px;
-}
-
 
 .muscle-table button {
-  font-weight: 600;
-  background-color: #ffffff;
-  cursor: pointer;
-  border-radius: 5px;
-  transition: background-color 0.6s;
+  --max-width: 50px;
+  --padding: 1rem;
+  width: max(var(--max-width), 100% - var(--padding) *2);
+  margin-inline: auto;
+
+  height: 47px;
+
+  font-weight: bold;
+  font-size: 1.07rem;
+
+  z-index: 2;
+
 }
 
-.muscle-table button:hover {
-  background-color: #e8de26;
+
+/* tablet */
+@media (550px < width <=800px) {
+
+  .body-map-container {
+    height: 170vh;
+    max-width: 527px;
+    gap: 22px;
+  }
+
+  .body-map-container img {
+    max-height: max-content;
+    margin-inline: auto;
+    align-items: center;
+
+    z-index: 2;
+  }
+
+  .body-map-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
-.muscle-table button.selected {
-  background-color: #41b317;
-  color: black;
-}
 
-.muscle-table button.clear-all-btn {
-  color: var(--primary-color);
-}
-
-.muscle-table button.clear-all-btn:hover {
-  background-color: #e8de26;
-}
-
-/* Pixel (px) = (Viewport height unit (vh) * Viewport height) / 100 */
 
 /* mobile */
-@media (max-width: 500px) {
+@media (0px <=width <=550px) {
+
   .body-map-container {
-    grid-auto-flow: row;
-    padding-top: 24vh;
-    width: fit-content;
+    height: 170vh;
   }
-  
+
+  .body-map-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
   .muscle-table {
     width: 280px;
     margin-inline: auto;
 
   }
-  .body-map-image{
+
+  .body-map-image {
     --max-width: 300px;
     --padding: 1rem;
     width: min(var(--max-width), 100% - var(--padding) * 2);
     margin-inline: auto;
-    
+
+    max-height: 43vh;
   }
-  
+
   .muscle-table button {
-    font-size: 46%;
+    font-size: 66%;
     height: 5.4vh;
     --max-width: 80px;
     --padding: 0.4rem;
     width: min(var(--max-width), 100% - var(--padding) * 2);
   }
 
- 
-}
-
-/* tablet */
-@media (500px < width <=800px) {
-  /* @media (min-width: 501px) and (max-width: 800px) { */
-
-  .body-map-container {
-    padding-top: 44vh;
-  }
-
-  .body-map-container img {
-    --max-width: 550px;
-    --padding: 1rem;
-    width: min(var(--max-width), 100% - var(--padding) *2);
-    margin-inline: auto;
-    max-height: 99vh;
-  }
-
-  .muscle-table td,
   .muscle-table th {
-    white-space: nowrap;
+    color: var(--black-color);
+    border: 2px solid black;
+    font-size: 66%;
   }
 
-  .muscle-table button {
-    font-size: 80%;
-    width: 24vh;
-    height: 5.4vh;
-  }
+
 }
 
-/* desktop */
-@media (800px <= width) {
+/* Muscle Table Color and More */
 
-  .body-map-container {
-    flex-direction: row;
-  }
-
-  .body-map-image {
-    --max-width: 500px;
-    --padding: 3rem;
-    max-width: min(var(--max-width), 100% - var(--padding) *2);
-    height: 57vh;
-    margin-inline: auto;
-  }
-
-  .muscle-table button {
-    font-size: large;
-    font-weight: bold;
-    width: 99px;
-    min-width: min-content;
-    min-height: 6vh;
-    margin: auto;
-    padding: auto;
-  }
+.muscle-table button {
+  transition: background-color 0.6s;
+  border: none;
+  background: none;
+  margin: auto;
 }
 
+.muscle-table button:hover {
+  /* background-color: var(--tertiary-color); */
+  outline: var(--black-color) solid 2px;
+
+
+}
+
+.muscle-table button.selected {
+  /* background-color: var(--secondary-color); */
+  outline: var(--black-color) solid 1px;
+  transition: background-color 0.6s;
+}
+
+.muscle-table button.clear-all-btn {
+  color: var(--error-color);
+}
+
+.muscle-table button.clear-all-btn:hover {
+  color: var(--white-color);
+  background-color: var(--error-color);
+}
+
+
+/* --------------------------------------------------------- */
 
 
 /* hero banner */
+
+.logo-container {
+  padding: 4%;
+  opacity: 1;
+  position: relative;
+  top: 0;
+  left: 0;
+  z-index: -2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (0px <= width <= 500px){
+  .logo-container, .stack-button, .hero-banner-box{
+    display: none;
+  }
+}
+
+
+.hero-buttons:hover {
+  outline: var(--error-color) solid 2px;
+  transform: scale(1.03, 1.03);
+}
+
+
 .hero-banner-img {
   position: absolute;
   right: 40px;
   top: 10px;
   width: 700px;
   height: 900px;
+  width: 700px;
+  height: 900px;
   margin-top: 340px;
   max-width: 350px;
   max-height: 420px;
-  opacity: 0.89;
+  opacity: 0.69;
   border-radius: 12px 12px 12px 12px;
 }
 
@@ -416,29 +503,89 @@ body {
   }
 }
 
-/* HeroBanner.css */
 .hero-banner-box {
-  margin-top: 70px;
-  margin-left: 0;
+  margin-top: 2px;
 }
 
-@media (width >= 600px) {
+@media (width >=600px) {
   .hero-banner-box {
     margin-left: 50px;
   }
 }
+
 
 .hero-banner-typo {
   font-size: 19px;
 }
 
 .hero-banner-typo-footer {
-  display: none;
+  display: flex;
+  opacity: 0.5;
+  margin-inline: auto;
+  justify-content: center;
+  align-items: center;
 }
 
-@media (width > 1000px) {
-  .hero-banner-typo-footer {
-    display: block;
-    opacity: 0.2;
+
+/* ------------------------------------------------------ */
+
+
+/* hero section */
+
+.hero-wrapper {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 1.3);
+  overflow: hidden;
+  z-index: 2;
+}
+
+.hero-section {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  background-image: url("/src/assets/images/gymMan2.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.hero-content {
+  font-family: var(--my-font);
+
+  color: var(--white-color);
+  z-index: 2;
+  width: 100%;
+  padding: 10px 65px;
+}
+
+.hero-text {
+  font-size: 1.99rem;
+  margin-bottom: 60px;
+}
+
+.word-in-text {
+  font-size: larger;
+  color: var(--primary-color);
+}
+
+
+.hero-text-welcome {
+  margin-bottom: 160px;
+  margin-top: 160px;
+  font-size: 1.8rem;
+}
+
+
+@media (0px <=width <=600px) {
+
+  .hero-text,
+  .hero-text-welcome {
+    font-size: 120%;
   }
 }
+
+/* ------------------------------------------------------ */
+
+

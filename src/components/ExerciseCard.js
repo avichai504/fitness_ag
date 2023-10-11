@@ -6,7 +6,7 @@ const ExerciseCard = ({ exercise }) => (
   <Link className="exercise-card" to={`/exercise/${exercise.id}`}>
     <Typography
       ml="21px"
-      color="#000"
+      color="var(--black-color)"
       fontWeight="bold"
       sx={{ fontSize: { lg: "19px", xs: "16px" } }}
       mt="11px"

@@ -8,7 +8,7 @@ const Footer = () => (
   m="60px" bgcolor="white" >
     <Stack direction={"row"} gap="10px" sx={{ alignItems: "center" }}>
       <Button>
-       <Logo/>
+       <Logo width="160px" height="160px"/>
       </Button>
 
       <Typography
@@ -16,14 +16,15 @@ const Footer = () => (
         m="30px"
         textAlign="center"
       >
-        Made With 🧡 By AGO productions
+        Made With ❣ By AGO productions
       </Typography>
       <Button
         href="mailto:avichai504@gmail.com"
         variant="outlined"
         color="error"
         style={{
-          fontWeight: 600,
+          fontSize: "18px",
+          fontWeight: 900,
           marginInline: "auto",
         }}
       >

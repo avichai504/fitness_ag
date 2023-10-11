@@ -1,0 +1,183 @@
+.body {
+    /* ================== Five Options for Background Colors: ================== */
+
+    /* 1. Minimalist White */
+    --body-bg-minimalist: #FAFAFA;
+    /* Soft White */
+    --container-bg-minimalist: #FFFFFF;
+    /* Pure White */
+
+    /* 2. Deep Space */
+    --body-bg-deep-space: #263238;
+    /* Deep Blue-Gray */
+    --container-bg-deep-space: #37474F;
+    /* Space Gray */
+
+    /* 3. Warm Sand */
+    --body-bg-warm-sand: #FFF3E0;
+    /* Desert Sand */
+    --container-bg-warm-sand: #FFE0B2;
+    /* Golden Sand */
+
+    /* 4. Icy Retreat */
+    --body-bg-icy-retreat: #E0F7FA;
+    /* Ice Blue */
+    --container-bg-icy-retreat: #B2EBF2;
+    /* Frozen Lake */
+
+    /* 5. Elegant Ash */
+    --body-bg-elegant-ash: #ECEFF1;
+    /* Ash Gray */
+    --container-bg-elegant-ash: #CFD8DC;
+    /* Slate Gray */
+
+
+    /* ================== Five Options For Colors: ================== */
+
+    /* 1. Ocean Blues */
+    --primary-ocean-blues: #1E88E5;
+    /* Sky Blue */
+    --secondary-ocean-blues: #0288D1;
+    /* Ocean Blue */
+    --tertiary-ocean-blues: #B3E5FC;
+    /* Light Sky Blue */
+
+    /* 2. Sunset Hues */
+    --primary-sunset-hues: #FF7043;
+    /* Sunset Orange */
+    --secondary-sunset-hues: #FFA726;
+    /* Golden Hour */
+    --tertiary-sunset-hues: #FFECB3;
+    /* Pale Peach */
+
+    /* 3. Forest Greens */
+    --primary-forest-greens: #4CAF50;
+    /* Forest Green */
+    --secondary-forest-greens: #81C784;
+    /* Meadow Green */
+    --tertiary-forest-greens: #DCEDC8;
+    /* Mint Cream */
+
+    /* 4. Modern Grayscale */
+    --primary-modern-grayscale: #212121;
+    /* Charcoal */
+    --secondary-modern-grayscale: #757575;
+    /* Cool Gray */
+    --tertiary-modern-grayscale: #BDBDBD;
+    /* Silver */
+
+    /* 5. Pastel Dreams */
+    --primary-pastel-dreams: #FF80AB;
+    /* Pastel Pink */
+    --secondary-pastel-dreams: #82B1FF;
+    /* Pastel Blue */
+    --tertiary-pastel-dreams: #B388FF;
+    /* Pastel Purple */
+
+
+    /* ================== Five Options For Green-Cream Colors: ================== */
+
+    /* 1. Lush Meadows */
+    --primary-lush-meadows: #6BB26D;
+    /* Fresh Grass */
+    --secondary-lush-meadows: #A8D5BA;
+    /* Dewy Leaf */
+    --tertiary-lush-meadows: #F5F5DC;
+    /* Beige Cream */
+
+    /* 2. Olive Gardens */
+    --primary-olive-gardens: #808000;
+    /* Olive Green */
+    --secondary-olive-gardens: #B0E57C;
+    /* Light Olive */
+    --tertiary-olive-gardens: #FFFFE0;
+    /* Light Cream */
+
+    /* 3. Tropical Escape */
+    --primary-tropical-escape: #20B2AA;
+    /* Light Sea Green */
+    --secondary-tropical-escape: #98FB98;
+    /* Pale Green */
+    --tertiary-tropical-escape: #FFEBD6;
+    /* Vanilla Cream */
+
+    /* 4. Forest Whisper */
+    --primary-forest-whisper: #2E8B57;
+    /* Sea Green */
+    --secondary-forest-whisper: #ADFF2F;
+    /* Green Yellow */
+    --tertiary-forest-whisper: #FAEBD7;
+    /* Antique White */
+
+    /* 5. Minty Freshness */
+    --primary-minty-freshness: #3EB489;
+    /* Mint Green */
+    --secondary-minty-freshness: #7FFFD4;
+    /* Aquamarine */
+    --tertiary-minty-freshness: #F0E68C;
+    /* Khaki Cream */
+
+
+    /* Option 1: Soft Fern */
+    --primary-color: #4CAF50;
+    --secondary-color: #AEDFB7;
+    --tertiary-color: #D8EAD2;
+    --background-color-main: #F5F5DC;
+
+    /* Option 2: Whispering Leaves */
+    --primary-color: #6DBE45;
+    --secondary-color: #BFD9A9;
+    --tertiary-color: #E0EBC7;
+    --background-color-main: #FFFFE0;
+
+    /* Option 3: Nature's Melody */
+    --primary-color: #578A3D;
+    --secondary-color: #ACCBA1;
+    --tertiary-color: #D1E0C5;
+    --background-color-main: #F5F5DC;
+
+    /* Option 4: Gentle Meadow */
+    --primary-color: #3E8E41;
+    --secondary-color: #A3D2A1;
+    --tertiary-color: #D5EAD4;
+    --background-color-main: #ECEFF1;
+
+    /* Option 5: Zen Greens */
+    --primary-color: #2E7031;
+    --secondary-color: #9EBAA0;
+    --tertiary-color: #C8D9C3;
+    --background-color-main: #E0F2F1;
+
+
+    /* Option 1: Classic Red */
+    --primary-color: #FF0000;
+    --secondary-color: #FF6B6B;
+    --tertiary-color: #FFD6D6;
+    --background-color-main: #FFF0F0;
+
+    /* Option 2: Crimson Charm */
+    --primary-color: #DC143C;
+    --secondary-color: #FF6A88;
+    --tertiary-color: #FFC1C8;
+    --background-color-main: #FFEBEC;
+
+    /* Option 3: Ruby Radiance */
+    --primary-color: #9B111E;
+    --secondary-color: #D23B3B;
+    --tertiary-color: #E89A9A;
+    --background-color-main: #FCE4E4;
+
+    /* Option 4: Wine Whispers */
+    --primary-color: #800020;
+    --secondary-color: #AD3E50;
+    --tertiary-color: #D79A9A;
+    --background-color-main: #F9E0E0;
+
+    /* Option 5: Berry Bliss */
+    --primary-color: #8B0000;
+    --secondary-color: #C71F1F;
+    --tertiary-color: #E78080;
+    --background-color-main: #FAD3D3;
+
+
+}
