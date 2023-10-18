@@ -40,7 +40,7 @@ function ResponsiveAppBar() {
     <AppBar position="fixed" color="default" >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <Button href="#home">
+          <Button href="/">
             <Logo width="52px" height="52px" />
           </Button>
 
@@ -49,7 +49,7 @@ function ResponsiveAppBar() {
             padding={"2px"}
             variant="h5"
             component="a"
-            href="#home"
+            href="/"
             sx={{
               mr: 5,
               display: { xs: "none", md: "flex" },
@@ -99,7 +99,7 @@ function ResponsiveAppBar() {
           <Typography
             variant="h6"
             component="a"
-            href="#home"
+            href="/"
             sx={{
               display: { xs: "flex", md: "none" },
               flexGrow: 1,

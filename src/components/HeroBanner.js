@@ -52,7 +52,7 @@ const HeroBanner = () => (
       <StyledLinkButton href="#diet-ai">Diet AI</StyledLinkButton>
     </Stack>
     <div className="logo-container">
-      <a href="#">
+      <a href="/">
     <Logo width="230px" height="230px"/>
       </a>
     </div>
