@@ -23,6 +23,8 @@ const Detail = ({ exerciseDetail }) => {
     },
   ];
 
+  const instructions = exerciseDetail.instructions;
+  console.log(instructions);
   return (
     <Stack
       gap="60px"
@@ -36,16 +38,25 @@ const Detail = ({ exerciseDetail }) => {
           textTransform="capitalize"
         >
           {name}
+          <br />
         </Typography>
-        <Typography
-          sx={{ fontSize: { lg: "24px", xs: "18px" } }}
-          color="#4F4C4C"
-        >
-          Exercises keep you strong.{" "}
-          <span style={{ textTransform: "capitalize" }}>{name}</span> bup is one
-          of the best <br /> exercises to target your {target}. It will help you
-          improve your <br /> mood and gain energy.
-        </Typography>
+        {exerciseDetail.instructions ? (
+          <ol>
+            {exerciseDetail.instructions.map((instruction, index) => (
+              <li key={index}>
+                <Typography
+                  sx={{ fontSize: { lg: "30px", xs: "18px" } }}
+                >
+                  <h5>
+                    {instruction} <br/> <br/>
+                    </h5> 
+                </Typography>
+              </li>
+            ))}
+          </ol>
+        ) : (
+          <Typography>No instructions available</Typography>
+        )}
         {extraDetail?.map((item) => (
           <Stack key={item.name} direction="row" gap="24px" alignItems="center">
             <Button
