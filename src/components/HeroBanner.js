@@ -2,14 +2,17 @@
 import React from "react";
 import { Box, Stack, Typography, Button } from "@mui/material";
 import Logo from "./Logo";
+import { useNavigate } from "react-router-dom";
 import "../App.css";
 
 // Reusable Inline React Component for the anchor tags turned into buttons
-const StyledLinkButton = ({ href, children }) => {
+const StyledLinkButton = ({ to, children }) => {
+  const navigator = useNavigate();
+
   return (
     <Button
       className="hero-buttons"
-      href={href}
+      onClick={() => navigator(`/${to}`)}
       style={{
         marginInline: "auto",
         marginTop: "22px",
@@ -22,7 +25,7 @@ const StyledLinkButton = ({ href, children }) => {
         fontWeight: "bold",
         border: "solid 7px var(--white-color)",
         borderRadius: "14px",
-        opacity: "85%",
+        opacity: "0.86",
         backgroundColor: "var(--primary-color)",
       }}
     >
@@ -47,9 +50,8 @@ const HeroBanner = () => (
       active step today.
     </Typography>
     <Stack direction={"row"} gap={0} className="stack-button">
-      <StyledLinkButton href="#body-map-container">Anatomy</StyledLinkButton>
-      <StyledLinkButton href="#search-field">Exercises</StyledLinkButton>
-      <StyledLinkButton href="#diet-ai">Diet AI</StyledLinkButton>
+      <StyledLinkButton to="anatomy">Anatomy</StyledLinkButton>
+      <StyledLinkButton to="diet">Diet AI</StyledLinkButton>
     </Stack>
     <div className="logo-container">
       <a href="/">

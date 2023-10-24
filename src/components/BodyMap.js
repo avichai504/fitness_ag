@@ -4,7 +4,7 @@ import { fetchData, bodyMapOptions } from "../utils/fetchData";
 import Loader from "./Loader";
 
 const BodyMap = () => {
-const MAX_MUSCLES_SELECTOR = 12;
+  const MAX_MUSCLES_SELECTOR = 12;
 
   const [image, setImage] = useState("");
   const [selectedMuscles, setSelectedMuscles] = useState([]);
@@ -12,7 +12,7 @@ const MAX_MUSCLES_SELECTOR = 12;
   const [selectorCount, setSelectorCount] = useState(0);
 
   const muscles = {
-  General: [
+    General: [
       "all",
       "all_lower",
       "all_upper",
@@ -51,7 +51,6 @@ const MAX_MUSCLES_SELECTOR = 12;
       "Clear All",
     ],
   };
-
 
   const muscleMapping = {
     all: "All",
@@ -103,7 +102,7 @@ const MAX_MUSCLES_SELECTOR = 12;
       return [];
     }
 
-    if (selectorCount >= MAX_MUSCLES_SELECTOR && !alreadySelected) return[];
+    if (selectorCount >= MAX_MUSCLES_SELECTOR && !alreadySelected) return [];
 
     setSelectedMuscles((prevItems) => {
       const newCount = clearAll
@@ -170,48 +169,52 @@ const MAX_MUSCLES_SELECTOR = 12;
   }, [selectedMuscles]);
 
   return (
-    <div id="body-map-container" className="body-map-container">
-      <table className="muscle-table">
-        <tr>
-          {Object.keys(muscles).map((group) => (
-            <th key={group}>{group}</th>
-          ))}
-        </tr>
+    <>
+      <div className=" muscle-table-container">
+        <table className="muscle-table">
+          <tr>
+            {Object.keys(muscles).map((group) => (
+              <th key={group}>{group}</th>
+            ))}
+          </tr>
 
-        {Object.values(muscles)
-          .reduce((max, current) =>
-            current.length > max.length ? current : max
-          )
-          .map((_, index) => (
-            <tr key={index}>
-              {Object.values(muscles).map((musclesList) => (
-                <td key={musclesList[index] || index}>
-                  {musclesList[index] && (
-                    <button
-                      className={
-                        selectedMuscles.includes(musclesList[index])
-                          ? "selected"
-                          : musclesList[index] === "Clear All"
-                          ? "clear-all-btn"
-                          : ""
-                      }
-                      onClick={() => handleMuscleClick(musclesList[index])}
-                    >
-                      {muscleMapping[musclesList[index]]}
-                    </button>
-                  )}
-                </td>
-              ))}
-            </tr>
-          ))}
-      </table>
+          {Object.values(muscles)
+            .reduce((max, current) =>
+              current.length > max.length ? current : max
+            )
+            .map((_, index) => (
+              <tr key={index}>
+                {Object.values(muscles).map((musclesList) => (
+                  <td key={musclesList[index] || index}>
+                    {musclesList[index] && (
+                      <button
+                        className={
+                          selectedMuscles.includes(musclesList[index])
+                            ? "selected"
+                            : musclesList[index] === "Clear All"
+                            ? "clear-all-btn"
+                            : ""
+                        }
+                        onClick={() => handleMuscleClick(musclesList[index])}
+                      >
+                        {muscleMapping[musclesList[index]]}
+                      </button>
+                    )}
+                  </td>
+                ))}
+              </tr>
+            ))}
+        </table>
+      </div>
 
-      {loading ? (
-        <Loader />
-      ) : (
-        <img className="body-map-image" src={image} alt="Muscle Image" />
-      )}
-    </div>
+      <div id="body-map-container" className="body-map-container">
+        {loading ? (
+          <Loader />
+        ) : (
+          <img className="body-map-image" src={image} alt="Muscle Image" />
+        )}
+      </div>
+    </>
   );
 };
 

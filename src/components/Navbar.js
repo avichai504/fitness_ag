@@ -13,6 +13,8 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import Logo from "./Logo";
+import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 const pages = ["Anatomy", "Exercises", "AI Diet Couch"]; //! menu bar
 const settings = ["Profile", "Account", "Dashboard", "Logout"]; //! user setting
@@ -20,6 +22,31 @@ const settings = ["Profile", "Account", "Dashboard", "Logout"]; //! user setting
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const navigator = useNavigate();
+  const location = useLocation();
+
+  const mainMenuHandler = (page) => {
+    switch (page) {
+      case "Anatomy":
+        navigator("/anatomy");
+        break;
+      case "AI Diet Couch":
+        navigator("/diet");
+        break;
+      case "Exercises":
+        if (location.pathname === "/") {
+          // scrollToElement("exercises");
+        } else {
+          navigator("/");
+        }
+        break;
+      default:
+        navigator("/");
+    }
+    if (page === "Anatomy") {
+      navigator("/anatomy");
+    }
+  };
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -28,7 +55,8 @@ function ResponsiveAppBar() {
     setAnchorElUser(event.currentTarget);
   };
 
-  const handleCloseNavMenu = () => {
+  const handleCloseNavMenu = (page) => {
+    mainMenuHandler(page);
     setAnchorElNav(null);
   };
 
@@ -36,11 +64,15 @@ function ResponsiveAppBar() {
     setAnchorElUser(null);
   };
 
+  const handleLogoClick = () => {
+    navigator("/");
+  };
+
   return (
-    <AppBar position="fixed" color="default" >
+    <AppBar position="fixed" color="default">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <Button href="/">
+          <Button onClick={handleLogoClick}>
             <Logo width="52px" height="52px" />
           </Button>
 
@@ -87,13 +119,14 @@ function ResponsiveAppBar() {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center" textTransform="none" >{page}</Typography>
+                <MenuItem key={page} onClick={() => handleCloseNavMenu(page)}>
+                  <Typography textAlign="center" textTransform="none">
+                    {page}
+                  </Typography>
                 </MenuItem>
               ))}
             </Menu>
           </Box>
-
 
           {/* Logo width xs */}
           <Typography
@@ -119,7 +152,7 @@ function ResponsiveAppBar() {
             {pages.map((page) => (
               <Button
                 key={page}
-                onClick={handleCloseNavMenu}
+                onClick={() => handleCloseNavMenu(page)}
                 sx={{
                   ml: 15,
                   color: "var(--black-color)",
