@@ -11,9 +11,9 @@ const Anatomy = () => {
 
   return (
     <>
-        <button onClick={handleGoBackHome} className="detail-btn">
-          Home
-        </button>
+      <button onClick={handleGoBackHome} className="detail-btn">
+        Home
+      </button>
       <Box id="anatomy" className="container ">
         <div className="gap"></div>
         <BodyMap />

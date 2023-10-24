@@ -4,8 +4,7 @@ import { Box } from "@mui/material";
 import Exercises from "../components/Exercises";
 import SearchExercises from "../components/SearchExercises";
 import HeroBanner from "../components/HeroBanner";
-// import HeroSection from "../components/HeroSection";
-import HeroSection1 from "../components/HeroSection1";
+import HeroSection from "../components/HeroSection";
 import BodyMap from "../components/BodyMap";
 
 const Home = () => {
@@ -14,10 +13,10 @@ const Home = () => {
 
   return (
     <Box id="home">
-      <HeroSection1 />
+      <HeroSection />
       <div className="container">
         <HeroBanner />
-        <BodyMap/>
+        <BodyMap />
         <SearchExercises
           setExercises={setExercises}
           bodyPart={bodyPart}
