@@ -39,12 +39,7 @@ const HeroBanner = () => (
     <Typography color={"var(--primary-color)"} fontWeight="600" fontSize="26px">
       Fitness & Education
     </Typography>
-    <Typography
-      className="hero-banner-typo"
-      mb="43px"
-      mt="-10px"
-    >
-    </Typography>
+    <Typography className="hero-banner-typo" mb="43px" mt="-10px"></Typography>
     <Typography fontSize="25px" lineHeight="35px">
       Daily exercise cultivates vitality, ensuring a vibrant tomorrow with every
       active step today.
@@ -55,7 +50,7 @@ const HeroBanner = () => (
     </Stack>
     <div className="logo-container">
       <a href="/">
-    <Logo width="230px" height="230px"/>
+        <Logo width="230px" height="230px" />
       </a>
     </div>
     <Typography
@@ -63,7 +58,7 @@ const HeroBanner = () => (
       fontWeight={90}
       color={"var(--primary-color)"}
       sx={{
-        fontSize:{xs:"50px", lg:"100px"}
+        fontSize: { xs: "50px", lg: "100px" },
       }}
     >
       Fitness & Education
